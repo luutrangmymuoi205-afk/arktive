@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Artkive – Trang chủ</title>
+<style>
+:root{--bg:#f6f8fb;--surface:#fff;--ink:#1c2430;--muted:#64707f;--line:#e3e8ef;--soft:#eef2f8;--accent:#6b8cb8;--accent-ink:#fff;--active:#dbe6f6;--hero1:#c9d9ee;--hero2:#e8eef7;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161c;--surface:#1a2029;--ink:#e8edf4;--muted:#93a0b1;--line:#2a3340;--soft:#232b36;--accent:#7f9fcb;--accent-ink:#0f141b;--active:#2a3a52;--hero1:#2a3a52;--hero2:#1f2937;--lginv:1;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12161c;--surface:#1a2029;--ink:#e8edf4;--muted:#93a0b1;--line:#2a3340;--soft:#232b36;--accent:#7f9fcb;--accent-ink:#0f141b;--active:#2a3a52;--hero1:#2a3a52;--hero2:#1f2937;--lginv:1;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Inter",system-ui,-apple-system,"Segoe UI",sans-serif}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:30}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-top:3px solid #8a6fd1;border-bottom:1px solid var(--line)}
+.bar{max-width:1280px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);letter-spacing:.2em;font-size:20px}
+.logo svg{width:44px;height:36px;stroke-width:2}
+.tabs{display:flex;gap:4px}
+.tabs button{border:0;background:none;padding:8px 16px;border-radius:8px;font-weight:500}
+.tabs button.on{background:var(--active)}
+.search{flex:1;max-width:520px;margin:auto;display:flex;align-items:center;gap:10px;background:var(--soft);border-radius:999px;padding:0 16px}
+.search input{flex:1;border:0;background:none;padding:11px 0;font:inherit;color:var(--ink);outline:0;min-width:0}
+.icons{display:flex;align-items:center;gap:14px;margin-left:auto}
+.ib{position:relative;border:0;background:none;padding:6px;border-radius:50%;display:grid;place-items:center}
+.ib i{position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:#4f9cf0}
+.av{border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600;flex:none;background:linear-gradient(135deg,var(--c1,#8aa7d4),var(--c2,#d9a5a0))}
+.wrap{max-width:1280px;margin:auto;padding:20px}
+.hero{position:relative;border-radius:22px;overflow:hidden;min-height:300px;background:linear-gradient(110deg,var(--hero1),var(--hero2));display:flex;align-items:center}
+.slide{display:none;width:100%;padding:36px 56px;align-items:center;justify-content:space-between;gap:24px;animation:f .4s}
+.slide.on{display:flex}
+@keyframes f{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.slide{animation:none}}
+.hero h1{font:400 40px/1.15 Georgia,"Times New Roman",serif;margin:6px 0 12px;max-width:560px}
+.hero p{margin:0 0 22px;color:var(--muted);max-width:420px}
+.small{font-size:12px;letter-spacing:.12em;color:var(--muted)}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 20px;font-weight:500}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.fc{text-align:right;min-width:200px}
+.fc b{display:block;font:400 26px Georgia,serif;margin:4px 0}
+.shape{position:absolute;right:22%;bottom:-40px;width:300px;height:360px;border-radius:50% 50% 0 0;background:radial-gradient(circle at 50% 20%,#fff9,#fff2);filter:blur(1px);pointer-events:none}
+.nav{position:absolute;right:56px;bottom:22px;display:flex;gap:10px}
+.nav button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center}
+.dots{position:absolute;left:56px;bottom:20px;display:flex;gap:8px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--muted);opacity:.35}
+.dots i.on{opacity:1;background:var(--ink)}
+main{display:grid;grid-template-columns:260px minmax(0,1fr) 330px;gap:28px;margin-top:22px;align-items:start}
+.side{position:sticky;top:calc(80px + env(safe-area-inset-top,0px))}
+.side a{display:flex;align-items:center;gap:16px;padding:12px 18px;border-radius:10px;color:var(--ink);text-decoration:none;font-weight:500;margin-bottom:4px}
+.side a:hover{background:var(--soft)}
+.side a.on{background:var(--active)}
+.side em{margin-left:auto;font-style:normal;font-size:12px;background:var(--active);border-radius:999px;min-width:26px;text-align:center;padding:1px 8px}
+.create{width:100%;margin-top:18px;background:var(--active);border:0;border-radius:10px;padding:14px;font-weight:500;display:flex;justify-content:center;gap:8px;align-items:center}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+.comp{display:flex;align-items:center;gap:12px}
+.comp input{flex:1;min-width:0;border:0;background:var(--soft);border-radius:10px;padding:12px 16px;font:inherit;color:var(--ink);outline-offset:0}
+.comp .ib.on{color:var(--accent);background:var(--soft)}
+.post-btn{border:0;border-radius:10px;background:var(--accent);color:var(--accent-ink);padding:10px 22px;font-weight:600}
+.post-btn:disabled{opacity:.5;cursor:default}
+.ph{display:flex;gap:12px;align-items:center}
+.ph b{display:flex;align-items:center;gap:6px}
+.ph small{color:var(--muted);display:block}
+.ph .more{margin-left:auto;border:0;background:none}
+.ver{width:15px;height:15px;fill:var(--accent);stroke:none}
+.txt{margin:12px 0}
+.media{display:grid;gap:8px;grid-template-columns:1.3fr .7fr 1fr;height:190px;margin-bottom:12px}
+.media div{border-radius:10px;overflow:hidden}
+.media.one{grid-template-columns:1fr}
+.act{display:flex;align-items:center;gap:22px;color:var(--muted)}
+.act button{border:0;background:none;display:flex;align-items:center;gap:7px;padding:4px;border-radius:6px}
+.act button.on{color:#d2566b}.act button.on svg{fill:currentColor}
+.act button.sv.on{color:var(--accent)}
+.act .r{margin-left:auto}
+.h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.h b{font-size:16px}.h a{font-size:13px;color:var(--muted);text-decoration:none}
+.me{padding:0;overflow:hidden}
+.me .cv{height:70px;background:linear-gradient(120deg,var(--hero1),var(--hero2))}
+.me .in{padding:0 18px 16px;margin-top:-34px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;margin:14px 0;font-size:13px;color:var(--muted)}
+.stats b{display:block;font-size:17px;color:var(--ink)}
+.wide{width:100%;border:0;background:var(--soft);border-radius:8px;padding:8px;font-weight:500}
+.row{display:flex;align-items:center;gap:12px;padding:8px 0}
+.row>div:not(.av):not(.logoj){flex:1;min-width:0}.logoj,.av{flex:none}
+.row small{display:block;color:var(--muted)}
+.row .btn{padding:7px 16px;font-size:13px}
+.row .btn.on{background:var(--soft);color:var(--muted)}
+.logoj{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font-weight:700;font-size:20px;color:#fff}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+.toast.on{opacity:1}
+@media (max-width:1120px){main{grid-template-columns:76px minmax(0,1fr)}.right{display:none}.side a span,.side em,.create span{display:none}.side a{justify-content:center;padding:12px}.fc,.shape{display:none}}
+@media (max-width:760px){.tabs,.logo span{display:none}.bar{gap:12px;padding:10px 12px}.wrap{padding:12px}main{grid-template-columns:1fr}.side{display:none}.slide{padding:28px 22px 60px}.hero h1{font-size:28px}.dots{left:22px}.nav{display:none}.media{height:140px}}
+
+.lg{height:38px;width:auto;filter:invert(var(--lginv,0))}
+body:not(.home) .vh,body:not(.jobs) .vj,body:not(.profile) .vp,body:not(.jobd) .vd,body:not(.community) .vc,body:not(.chat) .vm{display:none!important}
+@media (min-width:1121px){.profile main,.chat main{grid-template-columns:260px minmax(0,1fr)}}
+.ib.sv.on{color:var(--accent)}.ib.sv.on svg{fill:currentColor}
+.sr{display:flex;gap:12px;align-items:center}
+.sr .search{max-width:none;margin:0;flex:1}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 18px;font-size:14px}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.job{display:grid;grid-template-columns:auto minmax(0,1fr) 190px;gap:16px;padding:0 0 0 16px;overflow:hidden;align-items:center}
+.job .logoj{margin:16px 0}
+.jb{padding:14px 0;min-width:0}.jb small{color:var(--muted)}
+.jt{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.jm{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;font-size:13px;color:var(--muted)}
+.jm span{background:var(--soft);border-radius:6px;padding:2px 9px}
+.jm .btn{margin-left:auto;padding:6px 16px;font-size:13px}
+.jm .btn.on{background:var(--soft);color:var(--muted)}
+.jimg{align-self:stretch}
+.cta{width:100%;text-align:left;display:flex;gap:14px;align-items:center}
+.cta small{display:block;color:var(--muted)}
+.cta.res{flex-direction:column;align-items:stretch;padding:0 0 16px;overflow:hidden}.cta.res>div:last-child{padding:0 18px}
+.resimg{height:130px;background:radial-gradient(circle at 25% 40%,#f1d2c4 0 16%,transparent 17%),radial-gradient(circle at 70% 30%,#fff8 0 14%,transparent 15%),linear-gradient(135deg,var(--hero1),var(--hero2))}
+.pcard{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:28px;align-items:center;padding:24px}
+.pav{width:150px;height:150px;font-size:44px}
+.pcard h2{margin:0 0 6px;font:400 30px Georgia,serif;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.badge{font:500 13px "Inter",system-ui,sans-serif;background:var(--active);border-radius:999px;padding:4px 14px}
+.pl{display:flex;gap:16px;color:var(--muted);font-size:14px;margin-bottom:10px;flex-wrap:wrap}
+.pcard p{margin:0;max-width:62ch;color:var(--muted)}
+.pcard .stats{margin:0 0 14px;min-width:260px}
+.pbtn{display:flex;gap:10px;justify-content:flex-end}
+.pt{display:flex;gap:32px;border-bottom:1px solid var(--line);margin:8px 0 18px}
+.pt button{border:0;background:none;padding:12px 4px;font-size:16px;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
+.pt button.on{color:var(--ink);border-color:var(--accent);font-weight:600}
+.pf{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start;margin-top:14px}
+.wg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.w{border:0;padding:0;border-radius:12px;aspect-ratio:4/3;position:relative;overflow:hidden;text-align:left}
+.w span{position:absolute;inset:auto 0 0;padding:22px 12px 8px;color:#fff;font-size:13px;background:linear-gradient(transparent,#0007)}
+.w.on{outline:2px solid var(--accent);outline-offset:2px}
+.det{position:sticky;top:calc(84px + env(safe-area-inset-top,0px))}
+.det h3{margin:0 0 8px;font:400 24px Georgia,serif}
+.tg span{display:inline-block;background:var(--active);border-radius:999px;padding:3px 12px;font-size:13px;margin:0 6px 6px 0}
+.dl{list-style:none;padding:12px 0;margin:12px 0;border-block:1px solid var(--line);color:var(--muted);font-size:14px}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.gal div{aspect-ratio:1;border-radius:8px}
+.hid{display:none}
+@media (max-width:900px){.pcard{grid-template-columns:96px 1fr;gap:16px}.pcard .pside{grid-column:1/-1}.pav{width:96px;height:96px;font-size:30px}.pf{grid-template-columns:1fr}.det{position:static}.job{grid-template-columns:auto 1fr}.jimg{display:none}.wg{grid-template-columns:repeat(2,1fr)}.pcard .stats{min-width:0}.sr .post-btn{display:none}}
+.bc{display:flex;align-items:center;gap:12px;margin-bottom:12px;color:var(--muted);font-size:14px;flex-wrap:wrap}.bc b{font-weight:500;color:var(--ink)}
+.dcard{padding:0;overflow:hidden}
+.dban{height:110px;background:radial-gradient(circle at 70% 40%,#fff8 0 18%,transparent 19%),radial-gradient(circle at 30% 70%,#f1d2c4 0 14%,transparent 15%),linear-gradient(120deg,var(--hero1),var(--hero2))}
+.dpad{padding:20px 24px 24px}
+.dh{display:flex;gap:18px;align-items:center}
+.dh .logoj{width:84px;height:84px;border-radius:14px;font-size:36px}
+.dh h2{margin:0;font:400 28px Georgia,serif}
+.dh b{display:inline-flex;align-items:center;gap:6px}
+.acts{margin-left:auto;display:flex;gap:10px}
+.acts .ib{border:1px solid var(--line);border-radius:10px;padding:10px}
+.pills{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;font-size:14px;align-items:center}
+.pills span{border:1px solid var(--line);border-radius:999px;padding:5px 14px}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ig div{background:var(--soft);border-radius:10px;padding:12px 16px}.ig b{display:block}.ig small{color:var(--muted)}
+.dact{display:grid;grid-template-columns:1.2fr 1fr;gap:12px;margin:16px 0 6px}
+.dact .btn{padding:12px;text-align:center;text-decoration:none;color:inherit;display:flex;gap:8px;align-items:center;justify-content:center}
+.dact .btn.p{color:var(--accent-ink)}
+.dsv.on svg{fill:currentColor}.dsv.on{color:var(--accent)}
+.dsec h3{margin:22px 0 6px;font-size:18px}.dsec ul{margin:0;padding-left:20px}.dsec p{margin:0}
+.sk{display:flex;gap:8px;flex-wrap:wrap}.sk span{background:var(--soft);border-radius:999px;padding:4px 14px;font-size:13px}
+.job,.row[data-open]{cursor:pointer}
+@media (max-width:900px){.ig,.dact{grid-template-columns:1fr}.dh{flex-wrap:wrap}}
+.chd{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+.ctitle{margin:0;font:400 30px Georgia,serif}
+.chd .search{max-width:300px;margin:0;flex:1;min-width:200px}
+.ctabs{display:flex;gap:28px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.ctabs button{border:0;background:none;padding:10px 4px;font-size:15px;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
+.ctabs button.on{color:var(--accent);border-color:var(--accent);font-weight:600}
+.cbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.ev{padding:14px}
+.evimg{height:130px;border-radius:12px;overflow:hidden;margin-bottom:12px}.evimg svg{width:100%;height:100%;display:block}
+.ev h3{margin:0 0 4px;font:400 24px Georgia,serif;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.evd{margin:0 0 6px}.evm{color:var(--muted);font-size:14px;margin-bottom:2px}
+.lnk{border:0;background:none;color:var(--accent);font-weight:500;padding:0;font-size:inherit}
+.lnk.on{color:var(--muted)}
+.spots{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--active);border-radius:8px;padding:10px 14px;margin:12px 0;font-family:inherit}
+.spots b{font-weight:600}.spots span{font-size:13px;color:var(--muted)}
+.eva{display:flex;gap:22px;align-items:center}.eva .btn{padding:9px 34px}
+.btn.jn.on{background:var(--soft);color:var(--muted);border-color:var(--line)}
+.evmore{margin:12px 0 0;color:var(--muted);font-size:14px}
+.badge.pub{background:var(--soft);color:var(--muted)}
+.rooms{padding:14px 18px}
+.rr{display:grid;grid-template-columns:1fr 110px auto;gap:10px;padding:12px 0;border-top:1px solid var(--line);align-items:center}.rr span{color:var(--muted)}
+.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4cb86b;margin-left:6px}
+.sevr{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.sevr>div:nth-child(2){flex:1;min-width:0}.sevr small{display:block;color:var(--muted)}
+.thumb{width:80px;height:64px;border-radius:10px;overflow:hidden;flex:none}.thumb svg{width:100%;height:100%;display:block}
+.tr{padding:10px 0;border-top:1px solid var(--line)}.tr small{display:block;color:var(--muted)}.tr .lnk{font-size:17px}
+.empty{text-align:center;color:var(--muted)}
+.pf2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px 0}
+.fi{border:1px solid var(--line);background:var(--soft);border-radius:8px;padding:9px 12px;font:inherit;color:var(--ink);min-width:0}
+@media (max-width:900px){.pf2{grid-template-columns:1fr}.eva{gap:14px}}
+.cc{display:grid;grid-template-columns:300px minmax(0,1fr);height:calc(100vh - 140px);min-height:540px;max-height:740px;padding:0;overflow:hidden}
+.cl2{border-right:1px solid var(--line);overflow:auto}
+.cl2 h3{margin:0;padding:16px 18px 10px;font:400 22px Georgia,serif}
+.ci{display:flex;gap:12px;align-items:center;padding:12px 18px;width:100%;border:0;background:none;text-align:left}
+.ci:hover{background:var(--soft)}.ci.on{background:var(--active)}
+.ci>div:nth-child(2){flex:1;min-width:0}
+.ci b{display:flex;justify-content:space-between;gap:6px;font-weight:600}.ci small{color:var(--muted);font-weight:400}
+.ci p{margin:0;color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ub{background:var(--accent);color:var(--accent-ink);border-radius:999px;font-size:12px;min-width:20px;text-align:center;padding:1px 6px}
+.tw{display:flex;flex-direction:column;min-width:0;min-height:0}
+.th2{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line)}
+.msgs{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.m{max-width:74%;display:flex;flex-direction:column;gap:3px}.m.me{align-self:flex-end;align-items:flex-end}
+.bb{padding:10px 14px;border-radius:16px;background:var(--surface);border:1px solid var(--line);overflow-wrap:anywhere}
+.m.me .bb{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.m>small{color:var(--muted);font-size:11px}
+.dsep{align-self:center;font-size:12px;color:var(--muted)}
+.fcd{display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.fcd small{display:block;color:var(--muted)}
+.fic{width:38px;height:38px;border-radius:8px;background:var(--active);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--accent)}
+.qc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;min-width:260px}
+.qh{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.qt{font:400 18px Georgia,serif;margin-bottom:8px}
+.qr{display:flex;justify-content:space-between;padding:4px 0;border-top:1px solid var(--line)}.qr span{color:var(--muted)}
+.qc small{display:block;color:var(--muted);margin-top:6px}
+.cmp{display:flex;gap:10px;align-items:center;padding:12px 14px;border-top:1px solid var(--line)}
+.bk{display:none}
+@media (max-width:760px){.cc{grid-template-columns:1fr}.cc .tw{display:none}.cc.open .tw{display:flex}.cc.open .cl2{display:none}.bk{display:grid}}
+</style>
+</head>
+<body class="home">
+<header><div class="bar">
+<a class="logo" href="#home" aria-label="Artkive"><img class="lg" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALgAAAB+CAYAAACXgttuAABGrklEQVR42u29WXCcV5odeM53/0ysBIidIEGApFKkBImiJGjfUEt3dXV3dXW5bdlte+xoR/eEPTNvMw+emXBEhR7naeZhYmYiHJ7weKY97ZbH7rW6lq4qQSpVlRaUFkqQRIEgQYIAsQPEnvnf78zDnwkkKWqnJJLCjcgILJl//su55577rcDuqB4EBhMACQAIYAGFmgIKNd8FbPf23JAPdHeU74MBiOXfcy1dtxwNVK/MErhdbGn0d0ZHRy+V/28AfPe2Xf9jl5XKAO/r68tVJnzn4cOtgfy7COFfkfyXgH9neVOdlTcPDAyEXXLYBfgNtYodOnQoBaCWI0eafQv3g/h2kuQfSXI1j5L4Fh0dlQ/Mzc19WQDOqtWNN+I12y64BwMADA0Nxa6uroakZA86+U1A3ZJAAaCSUtXDjTF+WcBtGBhI+vv7EwwMJFVAv2FGsrv/AMp62orIHwpRXzfY4yDq3dM10TYgjirG1cqba2tr/UtwXwQgYng4juxKlBt26SWwygEg19JypAfKPyrgK6QdBa1RiutSPEn6zyxfmq98eHS02csAuGlZ+2Yhvy8zgxuAFBj26Z6eVks5CNo3AB0lrZYEPKZb7v58EjQ0G+PijvXkiAPDN+OE9wprA0B390C951a6SkWvyymsb25uLi0vj69gx9rE632if5k1eKj8UFJyK4knzfhVknsBB7OF+pJLv0Bp/U1MTW0WCoVcds+evtkY3NDXl6++JwCwydW709T/yEz/Y2rpPwv1ufube3ubrjIxdhn8ulqCMwbaAsD2A0cKqfM3STxsZq3RI9w9JbAF2HmCZ6anp9cAoFQqVevTm2kPEjE+HgGgo6O/ESh2ocZuleLXIP22xMOEzpGs8RimASyV78Eug19vD7Vs7wYANO4rtMv5jwH+I4Dt7l556lvu/o6kF1my5cr7x8cb/CYCd8WCtH0/BjCQc0sf8IA/dPf/AeI/lFAgWQfiKKATdOu+gul1PbP4lwngBID29vYIgM29vS2J4oMAfpNmtwKAFFMALmGV0ssBfK6ubm0TeLL8QO+IN4nWVqa3h1IAxa6urob2A0duPbdv+dugf4eG3zHyCTPrMbM84BHCMqBVdxRvpEmefHnAPRiAIR8eHo4tR440WYlPwPC7AAo76yyNpCQtyvyFuMEXZxYn1nYOc0Nr77I86w/ASKzaKIaiNd9jMf0HgB4j2QmhJaODbXJeg/QCyWfMdBqXhylc1zLlS6TBVytWAnDdDsDwNVBPEGiUewkUSUsAgoZ1kGcXFsfK8mQsVwWIG1VrZ3btDNxAf3++dbnYKerOIPwanN8xCz0CIUW5+wbJHEkKmDZyKDh/OnuxZxIYu2Em+c0uUap2+Y0CwD3797cl5AlKDxutj7Q8IEAQQJS9l0t0LlUOUigsW/le6Qa8fsPgYLhcNw8mLZc2j5nz94L431H4fZodEFS5RLJMfi6tkHhbFl6tqSmNlWWNVU2a6/qefBkYvGw1GUrRPVCf5+IJSYMSjpBMIFUeECVPJV0ycsyVrpdB4fl8/kYE9g5rDw0BAHp6eupWrH5fKJ0rGPggqK8D/ArNIEW4fI2igailhZzkEdA7gp43xnfHx8c3r3L8XQ3+BQ4BAwZkjos9XOsh+Q0nvkayRRIgiWQCUIIvAfi5gF/klJuvyJKRkZEbSXtXa+20Isu6MVC/Xlq4MwnxCdAehHBc0AEDIXlFbdcASskA0AD3JRJDCOmPZhsbz139/u4C/Itkbge+FYFhdHT0N0aW7pTzYRK3QDC4l0ACtBxIKsY10l62NL6czJRWL7c43Jhau7u7u37d93QVtXLCQvIQoV8TdMIYEpcgKZU8ksgBTMCyrJOWAbwawOdy7m9hZKRYWdFwA8XC36wanMBgOfLtKaHrrgbVlu6R8DiFW0gzll2VEiIAERBoqxJG8/nSuxOY2ASevFG0Zpm1r9DaXV0Nm2n93cFKv48Q/xsQvw/yHpol7g4JWwJAMgcQJEGauXxViC/B8JdF6LWJiYmNG425v0QSBWjKr+9DxNcC7GFQe+EeQZYngLY3ohLWAMzsPNAxuwGsJ5XsoghUa+26bqa6g9TjBvsGQzhBGtzjGlxvSzoLcQ+IewFrB9yzWwAAuOjRn01C8tO5ep8BvmvAUzckAG5GgJeX6k4BQNuxtj3hkt8VaV+n4U7K6uWeAiLIQICSIHkKYDKQs9tH6t8gRq7r9DQD+pNqu3YPULdeqjueWPyaYA+TuINmR8gAjykAPOfS92QaM9dxCn1mbHNR7iqCugToVXj4RV3N1imMjm8BI6F8/OveNf9lAHiZdZ+OwEDOVuePOO1+SLcRbCirDc8sYUgABMiLDoyDeMuiLeP6z7ms6G0HRorZZOzPtyxu7ttwnbCARwT7hkknYBYErXmMk4Beluv7IcfntwQSfgvJCIJGC9HjpuQjIXAopnq7bDVh1Up2wzm5blYGJwC1tCztg5JHIDxIoAnybA0mDJJoVkHJIqWfQ/hlsSFd2Ab39Wk9KevtQgKMblX+0nJp8yhhX4f5N0HcZuBBkEHSEqgXTfhpdP4kBz+7lgavYXxEwH0Q9gqAGUHnIsChkNqPZxf2XwRGyzJv+IZN8EhuMmBr5zWQU838YSE8AvAYAMo9BRmwHQueET4R10WcTFN7vdDy7vrw9Wk9ucJKMhoBsLH7aFsd49EYMWjEb5PJo2YBMcZNIb4J4mWJz7PI5xfmT70DAO37bztKj1+VhYcB7JU8utsa4CMG/OLAxabRixhKsxIaQxE3cAUBu4nAvb1ZHASSpo7lXqPdDfFukl00y+2wMZllW1JlY8oWpcnlGV0YHkbpOrSevMdKQgCtBwoHauC/EcF/RuL3AbvPQoB7CsJfkvAnHvR/5qL/1fx84xiym5MEpEdhGKBZj5E5uJbkPizghykxMozh0o1qNbmZGbzCyvHd/fvbEsc9IB+C0AMyueIZEVDFiiIXVkxY2l7yry/rie2wdmYl6ejoaAQabnHhEUm/ReBRM2sRVIoxPSP3EcF+IPefLv6zsRE8lTFwR0dHY/pu/fEofEVEIZC1ACH4ost/ZvJnF5PSXHkSqbJRv5HHzQLw6gfBouoOGf0rAh8GtUeZy5Jl06AAGMlEEhxaJzERLCy8j+T5YsFdKOQw2uwos2p3d3d9KdQMuOzbdH2NZMHIxrIV6BWRP3TZL2B+crGtdroCbgBIc00tJj4h4asAWuVevlCNQ/h5nptvYmJqA4ODCYaGHHj6uo81+TIAvGLxEAC0HDnSFDfsqNHvJtjHcvzrFe8t/+ypnJMGjZacl64j68lOjuRoeVUZGMjtnV/fX9wq3k3hGwC+YyHsl8sljbrxDUk/c9czyxfxBnB6C5MAgHx5ZfMcQ0uU30vjbaTVuMcSgHMgX8h76e2pi1PrAIjZ2RvWanKzAbzssRzKHkRPT52t66jgd4HYT5JlIq7KOJEyIgfctQLgLafeCvni4g64G/XFTtiB0NfXGMbHhyrBTWi9sHwriF8H+U2QdwfavoyB9SsKPxT4vCfFt5bJKWB8q+p4JQDq7+/PzyyXDoLosxDqAYAeZ0B9Lwb9zfRkw+T2ajgyclOA+2aTKLEVda1E+hjNHhR0AIAErWcMpgaA4fLpwU2CZxB5xuLmys4/vhDtWWXbHvbxcZQAWGvPrd0G3KLoXyP52wTvyxYfn0LE6zL9SEiGFpPNNzB+rjIhcigUDKOjKYCI/v78zOrWccgeB9QFyCWUSI7R9FOvWXodWCjeDFaTmw3g2mZvEJTfKgu/Hmj3gsi7p6sgLyCLie0h2LgNJBKQtkyaVKIL0xemN3cO+7lrTwIDCQYADA+nle/eu+/QQZN+T8KvkbwTQC8JuMdzBP5Mwt+mMTm5J7c2jfGJqvNHRD5f2UNYyyL2geFbUvw7JLs8+pagCbiGgdzIwuhCuajo6s2UVH3DA7xae4fOw3e0x62t+0k9ALJZnk4COgVRAPdVyZRt0yiFFRCzW8ov4ItxRVfVIxkulUuthH37Cq0b1MGE4SuE/gsa74EEl6ajx7cBPkfoB3XTxeEJTGwsb1/XttseO6sBEFhsk3ifWXKUBniaLgE+DNpQmuRncBPXWbxR7eBV0YKwPftv2xu3Nh+g/HGCbe7xkqg/p/A3BNYBdBOorWSrSIJcmyAuQGFyZfLtpeywl9m/PxfW7unpqal+Dq0HCt1F+G8l4L80w78AeU+2c/C3If6xG/6n1NN/Y772ygQui/JzYKSESjjrSDlBegA5Q3qQUBctwCxA0AJhPymFmmeXz51cxne/W57YwzeN9r4JGHy1wrYpQ7pXqQ8SvFfCJuQvAXoWZiU5fp1mezNDiqrA4PMExwXOYtvmPcPPHtTV8mq4NDGBEgC0t/d2W02+zx0PgvY7FsLXaQaP6bSkX0F8Vo6fLE6NvQgAyxWtPTAADA971WqWZHuOp2N/f39+dmrrPpGDEFsF33Bhk8JJQa9cmhjJTKN/9Vc53GBx3jc7wAUMb6M159ZH4BEQ+yC9SeDHztxFMh4W1GbM5kIWh0JI2iRwHsSZKJu7Cgj12QF8IGRRinWq2Lbb2tr2KMn/HXf8BqBjNLuVFhDTYlHQfwDxZw6M1lrz/BXHK2F4uFo3W6FQCKPZ5hLzq+kBQf+QtN+loRUxLjnsNQI/CMJOhs7w8A1RxOfLAPDqylQp8GRo7nr9oOTfoPEEsgyVZ0KIPzGaouMgiL24ojgNoU0AFxhxoc58bfGzf7iXWUgwAgCDyZ79t7UlsbTP8nafUvwTGh6CCEFzHtNxSC870z9ZvDD+i8ueWaEQyhaS9wSD7eSPPhli8ZVekA+aJQcBIKbFeU/j8wn0fC5fWhkYGMgNZ5vam7Za7o0H8P7+UInya+892Yli+nsC/2GwXH1Mi2MM+kGO6esxhtsjrAtUrSSqHEZIEC4UCcyImNnaUlUhmyF9BsDOWBvLthMKADR0zrclsfhVBv4OnHcx4E4IkNIxAH8t8vtiPF2r4vkrjplidLQCbF2xWdXISIcPDAzkxsZ+tU9gP4WmrBQGAWBVgS/V5eOp8fGJrRBCDXYcOtoF+HUlUYCYlg4F4JtG63X3GVHfY0hfmTg3sdHZXWgDvBNCPqtiX4U6sijHkovL9XUt6WfI2GXgbIebhvb23k7kct3A1oBgv2tmvx0sQeqlOcl/ReJ5Q/zRzIWxKtbuq0V/g5cdMO+nlQOAEjCUnjlTaAp19ijAxwDVyuOqxFWH/SoJfroqOx43m1nwRgX4DmBGOhwA9+y/rVUo3QvwNik6YH+rNP7x/OS5mebm4y2O9cMiOgHWVjz1LPOcXCkYlovE8sJETekaP+iKjKpKJctGV1dvb8r8b5B8TNIdJPtDyCGmRQB4Won/p1jUu3Uszl5+yPEtjFwWDvye7+zr6wvj4+MlALDauE8I3w4hfF1Sg7vPSnwGwF/MbtVc3D7q+Hh6M4P7RmPw7fomXV13NURffUCWfBXmBwGMQ6VnFmbGXwIQbU/pgDuOGNAhKV+uhexV5jjRfCvJpRvAV7wSpXcNWXunNFo/8p1zh1sUWHBLHqPrO4AezIrEYcnT9E13f5XB/mTh3Jlngax0KwYGcpibC8hA+6Hmu1wuJwDs7+/PXZzb6GWC42ahUxJiTMflfG5L8efo37+JoW2PZcRNPm4cgGfaOwKA2ebBlPg9Gr5CBLin4wTfrjwwkzoI9EjozMqxuUNw0IyZXnEJm3lyE3jKr7Ag6BNOPtvZSFYkxECubXHuiAc9DobfInA3Aw9BgNwnAXwf4l9Idiop1V1ed2R4+KMAe1t7j44eiH19B2pmlmcOWgh3AmqQKkqGy8Hs1NrU6AxmzqhQKNSMjt6cZsEbX4P39+eLi2u3EeExo7VFjxcB/Szk4kQFaIbYKnEfiT1lAFTFV4gkNum+UbvQWLxGjH0ZWLq7u+tX2dyT+MotZLgP4DdIPgYzyH0aHt8C+SKhH85Mnvrxx9Ta76u9L1060hDqknsBPkZY3tO4AfqC6C9bwklc56WOv4wA3yn3W1envr6+2tWl9T6A90ncF2PcAPUDB/+qloengHPe0dFRD3kTyE6zJJ95LeFgufxgpseXgbBSWp7bqvqej2NJqNTXtrK82d6otrUd25Ny43jOt75KhocB3gHwEEB4jKdJ/ScYnmERp6Lnpj+m1n7PeRQKBRsdHc1kyp60zUv2OMhBBDYoxlkAf0EP/7GOxe1owdHR0ZvOY3kjM3iWqTM8XFrqPd4YsPGoEY8C3Cv5aYFD+bj6+vjks5sAAtnYEN3qQK+7ynHg7iWAS06t9mJ/aQpT+BisdoV1ZGibYVtbH2hizdJ+Z3qCyD9mpq8TvB0EXJh29zdA/ZSOv5mbGntlG2CDg0nf2bPJ+EfU2leOHbv3QM5LCwcAv8NCvh0gXKV5oz0zy9WX58anNrFTmWoX4NeRJDGMZI3sGLcOEvotszCQMaLGvaR3pmezFiN9fX25zc1Yz5Crkcu2q6USBGhlV+YKaZdcXB/GcHoFcD+CdaQ/AB2V4vEAgMZ9hY7E5u6KkY9bwFdh7CdCe5bFr5MUf6Ak+ZHS4tsN+TgzVw2uoaF0/CoOm4+6so2M3BEHBupyoxMrPaTdJWAfAMgdhJ2X6wymptazOTBgZa/ll6YN+ecJcH4C5hbq6gTAmnuPNyel9YdAPgzaHnk8D/GnSHyicuxisWhpqMlDSq4AzHb5Y8LWZFozxs2PAKorYkeq6mvjydDY/VpLo3goNdzl0mMgHyVwNNvIasLlbwH6EYEfL5x/+1cAsFgmXvT342Nq7auvbHg6njlTaEhqdMLJJwi2uvuWok+DesWJ2e3r2Nj40rUfTz4HQPP9QTP4Pjd8lcBcANojNjbY1NO/N0k3HgXwLdL2e4yXIP2p15T+v8XxhosVoObzed/aSkIInvhlkZLl3HnIlTWf2vAtVGW9DAIYupq7vqyzV1l21myb1Zo6XjmUp92XKj4K4UGAx2hsFnxVHn8F2k+detHTOLK3FhevCHgpYWTk4+r+y8fAADGcxddmdm8bBPhVA/dG+RyJv0lhP16aLM5uf8dNlKnzeQP8akD9CGa3D7Q/l4BxYASoOVhocemroD0IKEr+qujfXxgff6vKkqCGhgZf2SrpA77SSZTg3KTF9EM3tlkfm2127erqaijlmvYq8rDBH4H0mKj7SHZL2iLwNqUXI/QcvfTzxYvn3gEQlyv3eieG5NMDrbGcVtffn/eljV6DTpDWAQB0TYD2jNa23gDObWHH6eS7DP7JLR0EBomBVWJjO1quOozzk39BiiMAHyLZKWkGxpcNHK+Au6+vLzfe0ODzSZKTbyYyhCvmXKW4pgPcBHwjjb5jIhxYZTnZwIBBQ+FCwGhe22XRADT3Ne/1YsOdlup+UQ8IuBfwPpI1kqYJe8GAZwX8MpTi2NxcxxxwrtqRUh1D8mnvtWOoU/39/fmJleJBYzgu94OEEN3XALwRS3hrefncEgBhcDBgaEhfNvb+pADnVUxr2mbk4ff5zJOwgacHbK5vLmxuNodicTXxPQ1WX9oKGfg8czd6tBBycUXOfMK8me/zkn4dtFskbAJ6xYBfFpNYcWfH8XKPx2mg2N5+eIuyqKuKHzrpRYqbFkK6fS3Ly7YNHAw5RrfNfkln5+E2T8J+lvyEwAdBPEKin2ACYBnCGxR/SdgQHS/NTL97NvvoOQDIYXBQZXBdKwYts/HT8eLFQkOuQXdCeJS0drkXJb1F8qUS04vbdu/V1S+d9v6kAK/0MrfC8rKN5vPCyMj7hlv29fXVzheLjdEaaht/iZoL+y7lqaTebbMuqWFjLG3WlYBa7RThocgQ4aUaQpS6EHkCxFdJ7IXHGUBvpMIksBffxR/YU5kncntEY40BdQQCdsQKMxnuUcAmgE1uBd/W2CuLCfr6iCuCkDp6bjnkkYMSHxF4r5F9YGgRHHI/TcNzUHg+KeG1tRqOrUweXwLeuVxmDQ1d2zzHKu0dgjoV8ZCAJ4KF5uhx2sBnUvLnazNn5re/N0uI0C7AP6olYXg4jl5uyss3X1irr6mxGjPVbsn2MIR9ayVvrUVuj4MNir4nEnVI0Sh4HYBGUnXlVLIAghCMtEBg3YFNSe0AbjcLHSTh7k0ij9D1VSuu3v6/7fvjxa5wyzxSzHoOW5A1yHWf4McA1ledM8soTyWtAFipqdmzuc3Y0zuOmj37b2vLY7OdtFsE3gfiG5AGaFYrYYvQecnHAAyZ+c/WUr22Nj82k3367fJ+YLttyrWXBZdp780+wu42WgekFMBpCr8MmzaWWVi+vNr7owJ8m7Ez6TH8npIChdYHmubn53pDbe6Qm/a51G3BegE/KtoeSIlJOYgNTtRQzAEKMiSQgoiwrS2ztguUVCSwKSEQqIMEgaCFJil+w8j7Ba47sQ5p2QMn4ZgWlbNMPhyD0Cy4kPnmyxpcEeAa4Ovk+nuA17iv0JHz9Cuw5AkA90I4Qto+UnDpHIFhia/I9IYJb6Q1YXrt/OilKw4Tq8JjrxW4q7T3kAYGBnLnZpYPCjyRdSIGJF2A8EIE3lqYf6dcAmO7Zox2AX511t5m7Mo/WlsLTarxvYl5i8PaluPSAZIHJRwC0E3yIKHDZkkTLUAmQA65A/KSiBIAJ5ACLEKK4HZngVj+8jqQTVYu0COPRcDnBK6TbAKx32hGI4iQxVIpXgJYArGXsJA5ea7KoAQhj6n19/fnzy2mTbUstVK5jhh0Dx2/BfnjpDUi8+5PABoF8HMXXzaW3mytDeOjo6PVxXVywGDFs/lZAWo7/PbMmeUG1uoOAI/A0J31+cRbpF4oha2Ln9Dv8KUBOIEnDf1vBoyMlKofVsuRI83ctPsM/rCU3EfggOi1BuZgqBNYC2EPyboyYwIQ3GOJwGsAzkJYRVZeKiXhEFMCUaDLfRMGErhVwGNm1omsEMi8oD8L8tdd1gXTXYLfqYhjFhLQEkDWxHKsyZXokiqx4EwA7XVZV87UMz+/2VlrOC7wEcDvDLJbQB4EDe7pEslfGuLzhL0mxHdKoW7u0sT+S3NVXsxtC0lm8vwMmXKAlR281XmXYA/A9Uiw0BDpM6C/XJS/ujIxsbRDTl9u9r4awMuWkacjRjI2bTlypDm3Gtq8Bge4iSNOvw/iQwAGzAIr6raCpKy5ka9IWgDiqoAFEqfhGobzLBKtZa4XRhCy6ClpHrOPr9pWTJXLfQVQAVA7XMsCX4L794JtvKC0Za9b8RUA/QTuiDE9AqGBQB2gBhGtBOuu1N/l08uD6AF0XwlogBECjlN8lOTB7P1+Sq63RQ3T9bJi/NXM7NjFK8CW6+/f4MhIh3/GrF0toLJr6e/P+VKpj/K7SeuWsAX423L71UrLpUlMbse9f6m199UAblVgiADQ3NzbErbwiCd4AqkegKEL4l5Be7LeNo5KniOMGVXKF0W8TuAk5O+SNlbyZDJJdDG1zfVktTaTIRZklshsVsGCUGq16em0BIyUWvbfcoJAXh4l4RU4/kJp7pWp+bE54OjSnv3Ti5boJIpsy1nsclc9qVYAd0P8dZCFbKqq/LAlCSSVh9BDshHQAAQjsAdURxZpyJdd/Hdy/dRr44WF8fG1zOFUPQaTQuGCFYvb9vPPOAt/x3zZ39+fm5sr9bj5XSKPln1X45CeM6ZvYmR2dVd7vxfg7+lm0NzXtzds5o9ZTnfQ8TBcjyHYbTSDySFZGT8CpGXBFyUu0H0RwChlI0aMbOXj6PL42LmPxiQTAICmnv5Wi8VDINrl7gJfY/Tn5uebyzEVQ+nKJOYBzAM4W9kIt7YWGqzOL8jRWwZxLS73SgKwQGMTzZq2/5w1oIK7b4BagnM1OrZUqguN3UebLax7WMvHxSMt61kSwlA6umMnvxoYP03ixAdpb19cXEzS0FAgeR+I/ZCXJL4F1wtK81M757G6q7+rAF7dg93R1dWQlHKPw/wPCOsX2QLzPUQWoaZy/ybSss2j/AzAHwf5cw6cF+OaA+vaSpaWJ8fXPs4y2Xbs2B6uFB8RMUiyNSvKw1Nzc3Vn8d6uA+XxpAFPx4WF0Usd+/sukLlJSEsQunB5T/Vyi9MqVSVmBd1EkKwVcJzm/zwJ+AY9PWPUVFRuKtRxqm5m5uwGMPk+px5QKCQFAJlv4I5YVd/w0wE9s3sTgIpJ017K77LoA7DQ4IqzkF4vub11af6d1Z1r/fLava8G8G32bmrqb7VQfMRo35H027RQQxfclbp8k4SByAGgK15U1qXopwR/NDs1+tzV7+iTYWBgzDLfRKOuKM1A9PUlGB8vAnAtx4MM+A0CDzKz8b1tbmfLLvNK7T0H+g0YUSYfnq5YeIIs10xXQ6UvSTXACMJdG2I6JWBOYkoqVz6pFgotwcI+JmGfpIeiSiURo5SdEThWl+bfqe++5bzH3ExI0k3QV62kS01NYWl0dHQLo6NVvoGR9/MjfHxmz+zeAgYT+eRBk98t4BClEsR3ZXj9kofp8nF3tff7ABzo78/nF0oPSfoXMt5PQ41iuR4lmVBKyZDQjDGmqwD+EtJfh1g6Se6dfv+n9nQcHv6AGz4+Xp5ggwk5dasrPhhobQJOQ3zOrXhmByhrhv5+FIpFjo5efpiW/bfs98gTJG4j2EwCck8FyMzyzKrPTlL8f938p3BfoawNxiOSBkDeJ/lxykgSISQ5yW+HvCBg0cBFkWuWxA0BqxDfSRO9dmkjvowBvIVhXGWFGUz6+2dtpK5OGG68LEECH55rmb1naEh48snQ+uNTXYy6R8QJ0vKCzgn+cyThTWyz9672virAWwuFJlspnQD1bZBfNbJecnf3dQI5kDmQeQDm0iykl0j+xdz+0z/IHuw5AINJT8/p3ERTU8xKOwxVL9G6qgNpJ7vE9u4bPwDkBkgckZRCejWAzwZtnd/Z+I5HjJSb2wFo7u1tMeX256J1O/AgoF8DdLdZsJ2E28u+e96JF+cvjP1k267f03OAXnte4gShkZim+wTUAGoA0UCxlUSHhdAJGkhCcsRYeswQXnL5rW3ThTesN5xB6uvFyGXl1pcvTUwsAUPpyMiHgvj9wF6p4BXxs7F65jZvBfEwyMOAolxvQviFQqzKtdzV3lcDeA6b8TYp/H0Qv2tkvTxCmYWhpuwJNJCQ+zKEv5H4F1sNeOFy1hqKExPviRzU+zzUSoWqysayOafi/XJ/hGCrQ3OUTpYMb89MlrNRrhhdXXc1pOna4wL+gchjkA4AaieDZZ2LgayTccXlI4jYIv2yUgkLExOTzb2967VbtW8AXh8NtZ6ihom6IPSS7Adwh8d4B017GQJIIljS4B6fEOw2CouKviRoIUn0Crzmpf37b3llcvL0+fcBdijbta/Mrqm6X4OsxKh35Vc701J6n4AHgoUGd58B8GJU+sry2LlLu9r7AwDe3d3dXHIeAfAgQ9gHd5f7FogakAmkCMAFrQt6g9L3Yz79yerouUVgMEH/rJVDYytufH4AS+1YGJ58MsVTWaBUXmpz6REjby/v/qYEXLStYuzquqths2Ypn99orAGAWFMKMDXHdOMuwv6uGf+ehQReKpZEXJC7AdojooHgdutAQSKYelTtkZYjzbEpbo3ncsLo6NbyuXOLy9vJNjujvr23u742f1Sp32bG29xjj5S2Q6wF0SxwL4E2WtgXGCA50pgOEOgvCXd0HCiciinPB88tFOtW55fPdayWN8vp+4RdXkWvDyYxXugDeT9dRyBsAXoLxK+WazlVvr5Kq+1d7X0lwIvY0x6Q7o1CndFQjuwrW1ZoMIasJLHGKP4ieu7k8rmxcgz/KqvkCKusFtxhoeoxtAPwp56q+nssGHAfzTo9M1kvILEcgvWWsKFQyjcjFPdEeCNSazXiFgADIO82SxBLRRfxnymdJNHhwADEO2jcK1VyMRUBlExWLC5uFicWJz60ZMT63Lmpho7+FWLtHYXwk5CiNhpqENQk6ZDBjoq4QzEOWEA3aTCzffL4bQcepjBn5mcVSm8mpdoX2vbPv4Wttsn5+fmVq7P6ZdIEg4ODyalT5/eXIk6APE4ynxX1x3OWYgSTlejHHbbfhfQVAJep2d1qAJXgXqqyjXv5plNQpDBH4kwR+Zkdpng5xZWF/y4H9Ac6MTo6+htL+Y0j8vgQgMNZjLVAqpPCfXK2Z05P1ghKAHQRuhXAsSzmBEse0xFIL7rrL5DjuSDdBWcHiMJ7NmzZr6pFrVddXzahBwZYyOLCAQCjowciMJTOzo6sAlgFcLk380hLc8dW+6EoP2bSqzHG41DsBNUssBVEB826IRyX/EFC/WLyOmv3nmvb33LRLZzN5XIz7Wd8cSSzEqVX3rsLFwpNqdgv6hGChwEV4XjFwOc8s5zsau4P2c8kSAJRTLFTue+qRi0TvFayxgSbDVXH1cc9j+7ue+u3tpYTNoRGyW/NRfu6pK8DbJW8nHrDA+WIwh5QLtoW6Ot09AK4i7Q6l87D8NcS/waM72DTLtYy5ErSMqA1EAKZnWImjgwEI6NGMVZ93tlkHR7W6GXXP/rBy/3Y4nJzoe3ti6ucDLKXapLSnpK4Jyj0irqV0HF3v9vAgtE6Hf4tSI8Itgxp2jx9KW7El+e79EprqXB+YeE9UYlYXS0dcCaPkHyYZrXyOC7gl8HrX52df73K7j30ZdberFIPlT2NdhjcuUJaCVkNv6Qc16fLnCRSkvW5wb0hpDP79vXWbdRwcjmX20Bzs2cpah0OrLK/f4OXLl0K6+u1uRhLFutrkvzWWm2SNLZsMW1LbbWDedVa1B6HFwg8SvI2kPWe9cWbJnUGwnkAC3JsKXgRIAyoAzAv+RaEv6L5f5w7/+7PKhfT23u8JS1uOYSSqKs9cOHqPeivZu2pSsUbMPRvsFAsEtvOnJFSOaJwtvwqq4XBF5rG5vrycet2EcOIutvphwF2A2y3wHYIt7jrGKk7o9mdBp3q7C6cLwW/WKq1i22l0kqxWLQikmMQHwDRK/kqoFdl4fXpqddmy3MxlJn/y6y93++ZZgBPNtfnY8ivGuUkISJKiNxpfy2SOQndhB6jsyUydyRX4ot703jOVi+VAJH7xyMkzs2FXJqrq09q1MSY1OWgBtbWtrpiXwIeco99IOskzxOoF9BMsyZk3ZEugfi+aD922Hje42KM+SLzxSaVcBDkOoQFAhPupb9K0uLr1RdTKs1tldLGNQtaNyjiMgIvF80nHXhSwNMf9caxUrR+9D2Ff66myobSS3jybHPvCwuW5l6rc/31VuD+aNbPGI8r+nFBt5lZG4CvCzoh00wEz1qK1+pW/eXVUjjnoT5nxvuZBZXBhVMGPF8KOrudv5FZYna199VZXQCQzM5iqe0AJ+Aac/cjAOpplWwYeVmGGMk6ggcAbwLYJqDbxHMMykyFbg6AbshRqndiD8zqBTRCaCPQA/ghhlzNjptfWad4IEK+DvEtUc/URPvB1NSp7UoLnZ23HkkNfeY+B4Yx0d5cmBl9PWOvgVzWEmTEAcBCukXjJmhXzGhGUpGifwKGuNrP5WVxkOiftW12Hx1Ngafj8jksAlhcBM4DONnQeeerdbZ1LCubjDvlupvGHomdJNsB9Qu8HdAtlrNRQUbiAYDtki8R+GW08OzyuX90FniqPMGOVAD+ybykN8ewtrZjDQD2hFCMMzOtC1VhHUyA8S33I6MJwt/K006ADzBrBeyStsqRVcp0OAxko6DbKHSD3IBXlgYr0z0IKAAMpAeROYg1ghpoIceK6ilDhCAd2qR4SsDzcp3Or9el3d1H24tAe+KhOYbSHSbvF7gYpJdqazZG5rY3ZcOx7BnXVEtL2jK/uW7khqDIap1NOJwCKTyJj0DgHwn4WenlEcTRD6lvuDbzxkx9R/8atPqucvypKTkk4BjBAcEHCN5O2mGHdxGYNyAl2Qoy745Jgu+GpDiOy3JQxwwYQFUIxJdBi1evWGw7dqxBS8XbzcJxd1s90Lr8/IWFcuQeBkMCQIsNNt2xjuckbwesDkSBYANpdduh3thesGlgA4wNduWetLJyajvVtxxxmEWuunyV7ssgI4BaAC0kEwqp5BcBO2/G/Gbt+lGHtUB+KLLUSaFHQB3gF8g4Xe5QYEAhB4zGbQtER4eHpekiLS3J5e+9MeI1Njxcjd3Luv1JYmDMsLxsGG12YLjaIjMF4O19+wrD7ngzJnZS0D2Q7gBxC4wHqaztSPmg9ZT6tBXuaW+/fXQrr4WDk7YyguHiJ/CQ3kwAT5INtachDAD+DRiXN3OaGRgYmB7Oyk+XzWQLC2lH656lIm1JQglAnYROo+UqxhWWE9NZfQ9Z/a3Vv7CqmJQgl4uaA/AOiVckTloWtLWPtCD5GogRUuNEgFPtovZB6KXUATKKOgWzX3kxf3pjY77cV2fhctYcH2euvn6PIdwKcIBmbdv3QnAYzkB4ceOFr4+VGc/wmZUUHhGmphwLCw5MXZVZV1cX1vP5vfPK4d0Ae0WMMxSbJO0rB7VVRl2ZzXtl6k4Y92zUpWpszK+tra1Vx8AEYCBgYL9haupKMNws4N6Ofu3u7q4Faw4h+ldFfhPAfpgmN9eKZ+699/j6+PiQV2zeGB8f3+zrG3xjVefozvUALbt7QVQtwSAgTyiBaIBT2bJfqW4pCJFACqooMZJKBW5SuCRpUeQshTGXpgzeK9hBEOWNrBYBzhq4TiLvUr1AE7UKIhU0a9JrzNW+29GFrfn5y6qkVoPTQ86LdJWkL9REfCWzVx7MtkWm0kZwcXFsGYtYBnC+o6Nn1ZOaAZrdSaBO2SZlVWCOZrcRuk3S3YBeQ2KvOutHug7eMsISZ2pqSivZyjYcr3CSflZx6l/4CCFoM0aHMQDaQ7JD8Ie2yBfOnj07B2AzqTavjI8Pbfb09LyxkmuYRTF9I4C9pDogNVPcC1ojqAYJuTJli0IEkYLagLiCzOW9ZOBydKwatVoEFxNpRQjrkJph3gOplWaQtETiTXONxIAzSabz610qBQtGRvdU8znmzk4d6liaHRpKcXkMO6o8gF4PbGyCG6S8LJayh0s5nS5S+C6Ap74QUxZ32gheJmkEAKV8rj6R9htDMwgoTS8BfAWUyeNDliR5gx+W2O7ACckueMRLgl4tbYWR5r6+0eXx8aXLwD0wkBSWl220udmr6qPcqBGHl533xMQtpebOycWQ+EWKlyxYQ4x+L113bKW5tyoA187yBk1MTGwAOIuBgQtdE4stJVl7MO2VrJnmjRAbAOVEZe1ABCdYErQBcdWoxVRcisnmsm/k1vK1G6Wli1nAVDcG6je7lx4H7Q5QPdl36x1AzyKE13IxnZKCKaT5GmGzSEtzeZWwVbs+NTuyiqlTH6otGxoaSsVLcdOJ4tUdV2K58OUXzewZq/f05PtCkNRUt1Zau1PgkawcnC+LehHADyUVAZuOHk9A2EuwjSEcpnDYPR6leT/BV5KivdGxv+/NyNwc6nBpYXR0DcPDpdEP9/7daJq9vCoNpcv5nqm2WHs280Wwy2j7HeiPYDuA2eQKj97OBQ4Pl6aBGQwMLHZPTuY2t+pysaE21KWbiSQqzUqtkSYz+prlPNkqprnajdLMgf0lDL/7ng5exbb5g4bcowAeMwuN7umsA0NO/ThXzJ9u7cgXi8UiV1Y2kta2ttJIR4djaMjfxzFz1bH2zlqK7roNQssqmyIzdqfJZHIYnh7bjvf44h7QkwY87ejqSpfm0oaazbVjSPgAhPYY000QL9L4J4SelaVriskbVHI3EI9KOKEY7zMLidE63fEEiNsBmwTsTUpv2WZ8o/VA4c2FC6MT7/n2wcGkf3bWRgBcEdp8o4DcCoVCMjo6uoUYSXqE6CSNIcl7LB1V8MOtrYULydW14iDLFx0xPFyaqiTeLgKXPsrX72xwCAwkwLA6OjpqEXinGB+jJb2SipJGCP58Kad3cGFkc3bHH7g1PT2Nq0iQD11au9CVnsPSuoQlyUuZwwoElEAw6HqJ3yhPsuHhUuw+mnjAg0Z7VECr5Bfl+lkun/x0+typcsLHkzPNXa+dSRIdlsII4KcVYwFEN6AuWtJrYK/H0gCAN6XwSnC+0tZ17I0E6Uwp4bLWfWVxcewShobSkQ93fes6Y/bqmpix3IYl6UDdPaDdJ6BJEmgmiN0BuM3r0vlw9WONX8MuAFPo70dYLXX2QuEJkL9GcC+kU3L/a4v2t+uTZ8rQFj9AHH/ITR4MwLhPYUo1Ta0dZrgdwEECtaRlGzxxTNCLm6sjY9hpK/hFNGayQqEhWVhYiADQVNt5QMH/0ELyMMmcPJ4U+cdzhQOvYnzcK1aZrbX5S/X5zlklubOJSqMC3zFhSkQU0G1mOdICoH0ADgK606AHRNwFoj1JlNQ0N2xtrKy8H08Z+vtzhebmsHD4MMtEBXzxQV1ZtGV/f4LZ/gQYTwGgqaPnSAi5PwL5ewK7COWy56yiDOtEaEw+AEjEe4rYD37IhVbnWw4YshYhfn5p/54ahBOiPURgn0vrkF4A7BkgP43tuJf7KnHN+hQsIgRcgmMWwBzAPahESEqJpPAFP7Dq7w4tR440+nrpBIDjBOujfJq0n+fdTmFoKAWeDF1d79ROT79eBFCaz8qyrQA439d84o213NqIAseYaCJ6epRSq8BWwjotWDtpxzymgPy4GI4Fr32tvevWMwiaBH2VxbgSY2594fiBdQwNpRgZKY5+OLt/mJf3WrJ1RT6nlQSZtrZjezxJey3gmxR/A2a9WchUlhQvoB7gUQJ7k4+2868qj/wxWKryQ2J79itNHyH1sFmo8ZiehvvPlOaHZ+dHVoEnQ5Y8PIxPuMu/vBi4cxnARcBnAe4HWFeu35fLkfmurq7c9PR08QtYeivaW/l8Xj09/c0bm5v3gPotEPs9psuAfiiz703nu6eAUwCejtPTuEo4LTC+/NpSoVAYWVoqXnTYG0kIXQIPgLxTrsfd/bgFghZA110O7SfxCCwuA5yieN5D/i0kGtszev5sc89DExMTv9y4+nkPhuqQBADILDON+pD0xE9o685CIHouXQoTExNblymKGj1g4h8FhvsF74X7lWk2dRAOAN6cfCRG/ESepiNeTskKSNUj8i4za5O0AWAkACent4tEbm/6roksqr2UbGw1pbMA5wRtZbthA021DtamWw3JF6ct3wwAiiMjI8XOzsM5JXzEzJ4g2eAxPU3aM3VMXsUffKWIp1DpSJxWkUbWaCBrq5KWIxqnAEx9F7D/48iR9lgMbwI4D/jxGL2PQAuADsI6LIT2rFJvhDzOkXpd0Km8OLqphYnO/becS53LSLgcbWt9uaNjtVIPpjof9qMQ26cwA8ZyCETF547mvr69uTR0kLzF5b8N8TsMVqsoSHEdYg0qSSNSArIJYG3yGSy/lfJvGhxEcvJ0T5fF9JjAQ9kyoncF/jxJwuQHuGA/wdiRR5u5tBSi5kTMitiiZacloI5EbW1HkisnqOnafPfHGH1rhnJvitRimyl3P836yoV1JzzFyMTMyAKeegqFQiF3RUfi8op69TqITwGOsbGZjo7+9VJ9PIdS/EHe1CXhoMHucfdByPpphkyqq92hB004BmBZ8E0Xl40+AeerpuSt1gvL47W33TY9+fbb8x9+cYNJoXAhlEqlbT4ttxgHkLU8rGxu+wEUq1eD7A1XrTffPTBQX5xcGpTwNVH3gTxMY617LEc1sQaX1cChsxJN+FlsoMon6K+fP7LHXPcS9rAMHS6tU/4qPPfC+mZpBdt9G4/4+7WG+CSjpqY53UyXLjFgmaxa2qmcwNrixkYen78bO9vQPvBACePjob29t9OZ+xrMTpBIPKZjlP1IOU18yB7h6hGNgwCGOgU8HatiXs4CQOPR7vaGtfp3CZ7zmD7i7h0A9gDeTHA/Q9JA8kBWMUDwrH3R7RJeA3W6tFq82L6/MAvHiitumFmMjs2cbMNMK+Ta2tTU1PoHVP16z/gAKw56enrq1tdr25DnHiI2FKeXjwL4dYJfo4VekJBi9IhSVtuGYXtSZHXmIWCR4AKvOYP39+cqVWnb9h86Zh7+awX7fbPQEWM6TvF/zqHp309NDS9UbSDsU8qTqhp+ANCfb+naPErjtw34p5bkjgKgx9LbAP41Q/HPZ88/dLaqaNBHMkF+qvMbGEgqZag7Dx/u0Eb4PVD/JUNyInqcI/x/Td3/3dLFtkngW7EcNRjw4RGCH6mDRGtroam2Vs0lWqun3kpDwQ330vkoieMWElQArqzcdRQwR2FJ0CaJTQgS6IBKAKcgP2OBb0fwVK7Gx6bHKo0APvno6rqrIeVmP6mHBdwN6haCbYI6CLSRLLe8UQU7laCnEpElxbr7AoSXCY5dewbP+lpm0bCOLifuDgydgJzCGYfempp6eb4cZx6qQH4Nxx0xX/PCWozJOrL476oKs8oprctV6f7PZ2Q9Kh0A4gZ6Cf+GWbin7A8YLknfv3Tx7HhGuht5AMWPeH66iuWBwCAHBlY5nG0CYzkl7lKmzYHG7u6TeW84K2mCxOtpmh4wqE5kPYEmCZ1m1sVgXeQVPOhC9NQFjkp8C9DbsZiMth+4dcpTzJExVsy+pEXSPLUYmWY/gxQkehJDEi0neTCm+RhDXWrr+8oK5iEA95iFVoKQIiS5uzYJGbb9G9u5tnmaVaJeLwh6TpFvXes2gpV+MGhpOdJM4YgyRwTcfVbUq4bc+HYuZ9Z591rEMF/x+acj84VVbMZLlG1IKhcLZSCZNyKflT++Vvr/I5u7rKmnf68Xt+4OCW4TAMlPyfXTqKxrVZkl9AnOSVfq9HIrn6seY3Vqaq61tfCC5+MpxdBo9DqzsDcStyj67SLvcvmJALZyuzCBUOkeneUM6AigVgLHFX2V1CYDi1WXCxeKlG9atDXSN0SVmCWfBETUQ94EsMGVy9MUBNVk8oktJJqRmf2qGFtZklbWsiXT21QC0ATBXWsgX0bk38at2nevJYNX8gNjT09P3UaJ9yLgMdKaXHEd0uuUXtoi5nH1YKlrugfoXFlZn8g1LJqwBLlnzh4FEXn3mFtb27LPibuzlWJkpNjWdmwPiluPIWe/BuBWyVfk+AkRnq1tsfXupkLN6Oho6RrsSa6eW3p587BSFatvj/q+vjfqY+5tiG8h6GSM6W3u3gghD6hGUgPIegB7yjkD7Ua2k4bLasWXTyPLB/CsmYxDkIoiIqRAsxqagbTtcOvKBCpXLq4Au9zdBglpyc5ecidZwT1uwTVF2TDIH5knIwvLJ1evGYMXCoVQdp+qZPX7LOjbIH+LtGbFdBLUc8VQfGllYmwJO5ns1zIDpXycJwk8jdenpzc6eo/MeNR5iiuCmgnkKTQFxcbV1docso5rn/VIKlKDTG91w+8Hhq/RGGKpNMbAH+R99eTUO1MbLYVCvrwCXev7krH68LB/WObR+vj4xYaO/lVo9RRC8hPAGimro7xLQT1K7QjofQR7JewHvDsD9+V56peLJ4NBQDBKqKn8rTpBRle0NS0HOlUpkKq/V95VbnHjcsD4lks/MOF7OWBkKttoXzsrSj6f375pXsJ+p+4LIekmgBgxL/C1SyFMlB/2Z1iJaWbb++VM5mHxvORzBPcIaHCoRcY97qXPksGJnQI+WwCsq+tYb2r+bSO+SWOLRz8D8M8RwitTF95Tnu6zWN2uDKayalbfcdwMl6qsMNvju/iu/S99/7Y3KdUcEXRQbj2EOkV1KMbm6LERgEEMpAxgktmjkZOYgMpBTAgFoUzZDifkIKOgtLxfckICIYkBVNkLDUeWZ1D2dMuRie4ShFmAPxP1g7mL7/5i+xn09dUk1+BBAoBGRkYivvtd2/Ov/0OLkB6Tq4PlVDUSkwDPV/pQDgwM2PDwsD4DgPNybZAsiXEcwFkX9gFogGu/GzpzOdUCKFfoGuTH9NJ++Hn09eXKcSRqbb21O5r/I1L/1JJci6fpEqB/m3r4d8vn3t6OKssSlj8306VfweofOLGewlOOcZxrazs2X6SdzDHWmaEmpqixEBLKg3tMCGsIweoBNSCwIcqb5GgIVL1nHsZaSDUZhWfqgmQR4oZRGxHcALRpsi1AgUSdpES0oklrAtfLmZDB4SnBBUeYd8dkva1PXzahx8eL14LBt7V3x9NPNzpKj4LhcaM3usc1eVwkcDKiZr4CwI3MovDZj3WsWi6cEeJZAPfSQoM7D7p0OCZxL4Dpz8jR5ZXJ3Nzb22IpHpfw98zCYcnnJf9RTOOfL8+Ons0+VqgBRj+q1eSzZHVe5i0tu+ZHs9mXAohVsTAfeBMe7OmpG6+vb8BmcU9Mc/XuqHOG2hxLtS7mRYYsuM4FhBTkhsE3SuBGAm2kilvuaQjK18kV0iQt5qy0Vs/mdQAolTaTudpYRFWCx3LZ2VTx8marwafcQPX19eXLScBo33/4KJD8qxDCr7urWYoXIfxItD+d155fYGp4vWpSfFYZ4KEKKNbce7Qvif73IfyLEJJDcl+PMf0haP/7nnzp2fHx8a0qOfFprSkBKCTAaAmAN/f17U2KyVcA/BOQ3yKQh/E/esS/Z3Hhb6tqFFZ0+vUSi82reJj1ye9Jf+jrW7PNzeaQplvmXjJv2il6YCEoWamNNTWXYlX5bS9b2gI2NogsN+Cj3qOduiif9k5UuWKDInsQdA9D2Gd0pKV0BeJzm56exL/41iaeGv48OhB41UX6cmMy27FcHHXggqSDNKtn5CGP6i0WaxrLG81P67Kvat41GgGgo6O/0UubAwB+F8DXSAa4fkGP38s3NP3s8cfuXn/6zTfzH9QK/QscH1AtoMzuA6vExgYrLvdSqcRcLqfMQnNZ97kIjMTx8Su+YfEjnsnwsH+AY4vAYNhpMjDsVxInP8UML4NhMAwOAidHL+xj9N8B7b9N8rmCJMRS6dlA/Pczk6dfAOD9/f35kc/ngRKDgyELNwU7e47c6eJ/BdnfpbHTY3qB4v8N45/OTWKkzLjVLUA+Dsit6lXcBnd+635IvwfZ75I4SOIdd/4HsPTv5yfPlhvaD+TKSylwY6WLfdDvX0S+5/uWyvg0loSQHWwoPXnhQn2I8SEaHyOR9xjXPcZ5EO8683MVQFcH13zmY3W724EstYsAXpXiaXcv0qzJzO6GcG9nZ9xbBWp+zAleWTHSMrjZ3Ne317n5IIRvQ/ZNkgchTEr4UQT+ts7Scztat/FGzHS/MjTWr3gJlxfErLzC5a/BJHtd+ffLPvN+r6q9wmUSSlcD6SfS3oVCYTsjpaFuby9gf8QQfoPkXrkvAvyFyB80hPyry8szmwCwsLBg+HyW40o2ijKst8baJmNwtII4bCFpBdDmcCdxen118Xz5RiUf4fyqUvGOGjC+/f6Dbcf2R+BRBn4HwjdIFgBcEvBTl/40F/MvXrx4en1npRi/2fvpXJnrWfUaV9X1Xw2gV7s3Hzt39BMzeNnuDWAwUcoDIO60kHRaCPWStgT8HEn+JfLSRtVE+jytBL5zjf+4lJU9wzCECYgGs6xxbPB7Ozr69pVvWCUJIlyuOS97lVmrHCNdZu39HbfevZHEbwL8OxB/k8ZbAWxAehbCXxalX5Xty9XF7r8stQT1CV5X++wnkhmfxIGh2dmvoL8fuaKtHDDqYQJPmCVZMH30Cy7/47Y6/9WZM2eK/f39yezs7BdRNy/T4uP/V1xfXt6ob2qjgCMA+oCyfVVMZWGxqeHgxNradAmAoXugFqstBL4CoMOA9oD+ltDf0RFmZ3utXKkqY+2Dx/YjjQ9H4+/C8C2Q95M4UK5f9yKAP1ViP7o0dXr6c3Dm7I4rRvIJJ0UJeDpevFhoyOdxvxseB1jnHjdJbhEYQ4KJcrbJ56u931+Lx8QxUQJfkPxWEA+R1iLoHjimi7Y539paeH1hYfTSjjmzKmp5pPq3gdy+fct707x6N0rpPUB4BMQgaUeybBlfhfArI/5SJQ0tTL17oWJ0wm497891fFwGv0x7N7a1HITjD2j2m4S1CFoBdBLQDzeT+EJpeXk1096HL2O9z3VMTXFHiy9s1ba0rBNsItFvljQQaBC8kYYaBGweWG29sICFD5JSoXVf/lYEe8Kjfofkt0jeS9pBgHTFFMCLWdGT9PvzM21nrrj2Xea+nhm8rL3Z39+fm17eOkjqjhBCB0TEdGsuUi/kDD+rW11dW8+Sia95xs4n1+KITUfS0+una56D+z2SHiZtL+l3ZS1OlCx2or4tOfS2LLe6VYol0lSbJgnr0vqSszHI+yDdLvFBAx6ghQOkQTFNHX4exJsQnskx+dHk5Ol3kOWnXW+OnF2Av49ZTCMjd8RCoZifvYSDdDsOeEtW5ZsAcQnEMErrb87Pz29gYCxgGH6No+M+yQZn26w3PjS+2d5722uQ/rPkMOk3zIK5xwLEWgbcBSTvMNU7dQFTAMFcbFeq3mDog9BLsEVQK2kdpEHuEDQq4hkTngH8le7uxjOTk5dNsl1wX+cMbpl+fDrOzp7Yk2vYGCDwmIgG91gkLQI2wehnpqen1wAAGxtfYPb6+0/UuXNds+37p4eANCd5rcTjpLVbZvm4NXp6P8k3JDuXnbs6QPRROGIhl0V4ukPuJXm8KOmcO55T0LMhYnh6+szM3OQZVJkdd8F9nWtwli0hEQD2tDcchPj7oH4bsBYIW5KPif6MA89uri5mcS9XWByuE3MVgHFfP9p3ac/SyqwT84DlIN3KJAkgQSkPqQPEfhB9BA6C6CCDZcnvhLJaHG9D+qHEP5PwQ9ThzbmJsYUr5NEuuG8EBq/Lci1ZKBTyixvqAb0/WNIOEGksLYL+y0B7rmG9tLKIwXI9jy9Ue78PuMseyOHh0gww1t7eu4GcpwJDTEsFEHlKDSD2GUN75ROSu9yXRC1KtkT4BIHXIvzZGuZembq401OobC3Z7Tx8AzD4dvfiqanH0NfXkV8pbvbS9SioJ4IlHSQBxbMu/D9pLj4zM31uBQPthqkpB0auV0/d9jmtry+vsX7vDGljgf6aZCOCFrKinb4HQA2gFMA0iJMQf0Lie3J8D+bPo5h/e2bm1NL7HX93XP8Mvm33XlkpNIS6cMKhRwk0uzzNkog4Y9KpxUps7vJych0/aF0xuePazJlpANN9fX2105fY0VAXjgrxDMGChL3MMk7mzXgKka8G93cuTp+evYIIyrE5u7LkRgI4C4WCjY5mBbtU43tdfATAIIAWeXSQ84BGLdYuVdkSb4QH/B4gluPaJxrs2JJq+Q7cGlOqFgASlTYj8is5r126OP362lUmTdxl7xuQwSt2bxQKeax5L6B+M+sigRh9GfCTEF6SfA2VRIaOjhtBe1blJj7JLJczK7b/EbJWsmKUAL5E7ftuyMEPMqeVH5r19fXl1tas14N9g8Z/HpLkTgCIafG0Gf9NDfF018Te8WEMVzZWn1fU4LW8D58m0WEX3Dcgg5ft3ojr6+t1Cs3HYHgAUNtOI0xMC3rtD/9wbOypp+D4zCpVfS5sfnllqIEBq2SsAECWMXLNSwXvji8M4P39Vik47rW1TYo8QfgAhHa5E9CKyLOGeKEM7mtZqeqLlCzbNUSA9y0SuQvsGx7gmd0bwEAOpcX9pO4ws4Mgcu6+BWAMxEgpYgmfbaWqLxLsu+MGH/a+2nt42DE4mLS0LO0TdQLEUZo10oIIzJF4ITiGQ6lmYXuTldU62R2747oFePXfIk6fzllORwG7n9K+ci0tClwS8LopffvQocZNXJ6fuDt2x3UM8IGB7b+1m+0FMWDgfRJaJM9aXwAz7nZmerr9Qtb0/snqonS7LL47rmOANzZu51q6h4MkT5A8bMacuxfd/SLAd9wwmeUlAlX1AHfH7rhuAZ5p76GhCIidnefa4LwdxmM028us0c08gecp/jy6Lux8dGjn87tjd1ynAK+SGQ/Xpjk/DLBfQBtIg1mgsEHytRDw2r6LuFT1mV3tvTuua4Czusnr/v1L9WQ4QuoQpZzcY1bdHyukxks16fgosoTiXe29O240KwqKxfW8RbZBPCBiH8Dg8nWApyzFuV8bG1utkjW7Y3fcCADfLq+ADWtyl4oE8mYhc7+7TgbpJ6WSvfv05QV8drX37rhuR5Uncyf7pjaW1mnhLcB/4tFTApuS/trAZxcWcrP49CV1d8fu+FwGr87Eg0njvgst+cAjJj9E99Rkb9fWpqcrtcB32Xt33GgAf+/o66vt3LBmcl21tbWXyuDeBfXuuGHG/w/PlcAfWLk7xwAAAABJRU5ErkJggg=="><span>artkive</span></a>
+<nav class="tabs"><button data-go="home" class="on">Trang chủ</button><button data-t="Trang Khám phá sẽ sớm có">Khám phá</button><button data-go="jobs">Việc làm</button><button data-go="community">Cộng đồng</button></nav>
+<label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Tìm nghệ sĩ, dự án, việc làm…" aria-label="Tìm kiếm"></label>
+<div class="icons">
+<button class="ib" id="bell" aria-label="Thông báo"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg><i></i></button>
+<button class="ib" data-go="chat" aria-label="Tin nhắn"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12Z"/></svg></button>
+<button class="ib" id="theme" aria-label="Đổi giao diện sáng/tối"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg></button>
+<div class="av" data-go="profile" role="link" tabindex="0" aria-label="Hồ sơ của bạn" style="width:38px;height:38px;cursor:pointer;--c1:#5c4a45;--c2:#c9a89a">EP</div>
+</div></div></header>
+
+<div class="wrap">
+<section class="hero vh" aria-label="Sự kiện cộng đồng"><div class="shape"></div><div class="slide on"><div><div class="small">SỰ KIỆN CỘNG ĐỒNG</div><h1>Studio Meet Artist</h1><p>Gặp gỡ các studio sáng tạo và tìm cơ hội hợp tác tiếp theo của bạn.</p><button class="btn p" data-go="community">Xem sự kiện →</button> <button class="btn" data-go="community">Khám phá cộng đồng</button></div><div class="fc"><div class="small">28 THÁNG 11</div><b>19:00 (GMT+7)</b><div style="color:var(--muted)">Online · Số lượng có hạn</div><p style="margin:14px 0 0">#StudioMeetArtist</p></div></div><div class="slide"><div><div class="small">SỰ KIỆN CỘNG ĐỒNG</div><h1>Protect Your Art</h1><p>Tìm hiểu cách bảo vệ tác phẩm, ghi nguồn và chia sẻ an toàn hơn.</p><button class="btn p" data-go="community">Xem sự kiện →</button> <button class="btn" data-go="community">Khám phá cộng đồng</button></div><div class="fc"><div class="small">1 THÁNG 12</div><b>20:00 (GMT+7)</b><div style="color:var(--muted)">Online · Số lượng có hạn</div><p style="margin:14px 0 0">#ProtectYourArt</p></div></div><div class="slide"><div><div class="small">WORKSHOP CỘNG ĐỒNG</div><h1>Color Theory for Digital Painting</h1><p>Workshop thực hành phối màu cho tranh kỹ thuật số.</p><button class="btn p" data-go="community">Xem sự kiện →</button> <button class="btn" data-go="community">Khám phá cộng đồng</button></div><div class="fc"><div class="small">5 THÁNG 12</div><b>19:30 (GMT+7)</b><div style="color:var(--muted)">Online · Số lượng có hạn</div><p style="margin:14px 0 0">#ArtistWorkshop</p></div></div><div class="dots"><i class="on"></i><i></i><i></i></div><div class="nav"><button id="prev" aria-label="Trước"><svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button id="next" aria-label="Sau"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div></section>
+
+<section class="hero vj" aria-label="Việc làm"><div class="shape"></div><div class="slide on"><div><div class="small">ARTKIVE JOBS</div><h1>Tìm cơ hội sáng tạo phù hợp với tài năng của bạn</h1><p>Việc làm toàn thời gian, freelance và theo dự án từ các studio, thương hiệu và nhà sáng tạo.</p><button class="btn p" onclick="document.getElementById('jq').focus()">Khám phá việc làm →</button></div><div class="fc"><div class="small">ĐANG TUYỂN</div><b>120+ vị trí</b><div style="color:var(--muted)">Cập nhật mỗi ngày</div></div></div></section>
+<section class="hero vd" style="min-height:130px"><div class="shape"></div><div class="slide on" style="padding:26px 56px"><div><div class="small">ARTKIVE JOBS</div><h1 style="font-size:34px;margin:4px 0">Chương mới trong sự nghiệp sáng tạo</h1><p style="margin:0">Tìm vị trí biến ý tưởng của bạn thành hiện thực.</p></div></div></section>
+<section class="hero vc" style="min-height:130px"><div class="shape"></div><div class="slide on" style="padding:26px 56px"><div><div class="small">ARTKIVE COMMUNITY</div><h1 style="font-size:34px;margin:4px 0">Create. Connect. Belong.</h1><p style="margin:0">Tham gia sự kiện, gặp gỡ nghệ sĩ và kết nối trong các phòng chat trực tiếp.</p></div></div></section>
+<main>
+<aside class="side"><nav>
+<a href="#home" class="on"><svg viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4Z"/></svg><span>Trang chủ</span></a>
+<a href="#profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/></svg><span>Hồ sơ</span></a>
+<a href="#jobs"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 13h18"/></svg><span>Việc làm</span></a>
+<a href="#community"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c.6-4 3-6 7-6s6.4 2 7 6M17 14c3 0 4.5 2 5 5"/></svg><span>Cộng đồng</span></a>
+<a href="#search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Tìm kiếm</span></a>
+<a href="#chat"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12Z"/></svg><span>Tin nhắn</span><em>3</em></a>
+<a href="#noti" id="notiLink"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg><span>Thông báo</span><em id="nc">6</em></a>
+<a href="#more"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg><span>Thêm</span></a>
+</nav>
+<button class="create" onclick="document.getElementById('cin').focus()"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Tạo mới</span></button></aside>
+
+<section class="vh">
+<div class="card"><div class="comp">
+<div class="av" style="width:46px;height:46px;--c1:#5c4a45;--c2:#c9a89a">EP</div>
+<input id="cin" placeholder="Chia sẻ dự án, ý tưởng hoặc cập nhật…" aria-label="Nội dung bài đăng">
+<button class="ib" id="addimg" aria-label="Thêm ảnh"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="m4 18 5-5 4 4 3-3 4 4"/></svg></button>
+<button class="ib" aria-label="Thêm video" data-t="Tải video sẽ sớm có"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 9 5 3-5 3Z"/></svg></button>
+<button class="ib" aria-label="Thêm liên kết" data-t="Thêm liên kết sẽ sớm có"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>
+<button class="post-btn" id="pbtn" disabled>Đăng</button></div></div>
+<div id="feed"></div>
+</section>
+
+<aside class="right vh">
+<div class="card me"><div class="cv"></div><div class="in">
+<div class="ph"><div class="av" style="width:68px;height:68px;font-size:22px;border:3px solid var(--surface);--c1:#5c4a45;--c2:#c9a89a">EP</div><div style="margin-top:34px"><b>Elena Park <svg class="ver" viewBox="0 0 24 24"><path d="M12 1.5 15 4l4-.2.8 4L23 10.5 21 14l.8 4-4 .8L15 22l-3-1.5L9 22l-2.8-3.2-4-.8L3 14 1 10.5l3.2-2.7.8-4 4 .2Z"/><path d="m8 12 3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg></b><small>Nghệ sĩ đa phương tiện</small></div></div>
+<div class="stats"><div><b>1.248</b>Người theo dõi</div><div><b>482</b>Đang theo dõi</div><div><b id="pc">28</b>Dự án</div></div>
+<button class="wide" data-go="profile">Xem hồ sơ</button></div></div>
+
+<div class="card"><div class="h"><b>Gợi ý kết nối</b><a href="#all">Xem tất cả →</a></div>
+<div class="row"><div class="av" style="width:42px;height:42px;--c1:#3d4a5a;--c2:#9bb0c8">NR</div><div><b>Noah Rivera</b><small>Nghệ sĩ 3D · Los Angeles</small></div><button class="btn">Kết nối</button></div>
+<div class="row"><div class="av" style="width:42px;height:42px;--c1:#6b4f55;--c2:#e0b9b4">MS</div><div><b>Mina Sato</b><small>Gốm nghệ thuật · Tokyo</small></div><button class="btn">Kết nối</button></div>
+<div class="row"><div class="av" style="width:42px;height:42px;--c1:#4a4f45;--c2:#b7b59a">JC</div><div><b>Julien Caron</b><small>Motion Designer · Paris</small></div><button class="btn">Kết nối</button></div></div>
+
+<div class="card"><div class="h"><b>Việc làm gợi ý</b><a href="#all">Xem tất cả →</a></div>
+<div class="row"><div class="logoj" style="background:#1c2430">S</div><div><b>Senior Motion Designer</b><small>Studio Solis · Từ xa</small></div><button class="ib sv" aria-label="Lưu việc làm"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z"/></svg></button></div>
+<div class="row"><div class="logoj" style="background:#7f8fe0"><span style="width:22px;height:22px;border-radius:50%;background:#5469d4"></span></div><div><b>Brand &amp; Identity Designer</b><small>Lumen Creative · New York, NY</small></div><button class="ib sv" aria-label="Lưu việc làm"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z"/></svg></button></div>
+<div class="row"><div class="logoj" style="background:#e4efe6;color:#3a6b4a">✿</div><div><b>3D Product Visualizer</b><small>Form Lab · Amsterdam</small></div><button class="ib sv" aria-label="Lưu việc làm"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z"/></svg></button></div></div>
+</aside>
+<section class="vj"><div class="card sr"><label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="jq" placeholder="Tìm việc theo chức danh, công ty hoặc từ khóa…" aria-label="Tìm việc"></label><button class="ib" data-t="Bộ lọc nâng cao sẽ sớm có" aria-label="Bộ lọc"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button><button class="post-btn" id="jsb">Tìm kiếm</button></div>
+<div class="chips" id="jch"><button class="chip on" data-c="all">Tất cả</button><button class="chip" data-c="Full-time">Full-time</button><button class="chip" data-c="Part-time">Part-time</button><button class="chip" data-c="Freelance">Freelance</button><button class="chip" data-c="Contract">Contract</button><button class="chip" data-c="Internship">Internship</button></div>
+<div id="jl"></div></section>
+<aside class="right vj"><div class="card"><div class="h"><b>Dành cho bạn</b><a href="#all">Xem tất cả →</a></div><div id="rec1"></div></div>
+<button class="card cta res" data-t="Tài nguyên nghề nghiệp sẽ sớm có"><div class="resimg"></div><div><b>Tài nguyên nghề nghiệp</b><small>Hướng dẫn, mẹo làm portfolio và góc nhìn để phát triển sự nghiệp sáng tạo.</small></div></button></aside>
+<section class="vp">
+<div class="card pcard"><div class="av pav" style="--c1:#5c4a45;--c2:#c9a89a">EP</div>
+<div><h2>Elena Park <span class="badge">Nghệ sĩ đa phương tiện</span></h2><div class="pl"><span>Hà Nội, Việt Nam</span><span>elenapark.art</span></div><p>Nghệ sĩ thị giác và họa sĩ minh họa, khám phá mối tương tác giữa cảm xúc con người, thiên nhiên và đời sống thường ngày. Tác phẩm kết hợp tranh kỹ thuật số và mixed media, hướng về sự chữa lành, ký ức và sức bền dịu dàng.</p></div>
+<div class="pside"><div class="stats"><div><b>12</b>Dự án nổi bật</div><div><b>1.248</b>Người theo dõi</div><div><b>482</b>Đang theo dõi</div></div><div class="pbtn"><button class="btn" data-t="Chế độ chỉnh sửa portfolio sẽ sớm có">Chỉnh sửa portfolio</button><button class="btn p" data-t="Đã sao chép liên kết hồ sơ">Chia sẻ</button></div></div></div>
+<div class="pt"><button class="on" data-p="pf">Portfolio</button><button data-p="ps">Bài đăng</button></div>
+<div id="t-pf"><div class="h" style="flex-wrap:wrap;gap:10px"><div><b style="font:400 24px Georgia,serif">Tác phẩm tiêu biểu</b><div style="color:var(--muted)">Những dự án mình tâm đắc nhất.</div></div>
+<div class="chips" id="pch" style="margin:0"><button class="chip on" data-c="all">Tất cả</button><button class="chip" data-c="Digital Painting">Digital Painting</button><button class="chip" data-c="Illustration">Illustration</button><button class="chip" data-c="Mixed Media">Mixed Media</button><button class="chip" data-c="3D">3D</button></div></div>
+<div class="pf"><div class="wg" id="wgrid"></div><div class="card det" id="wd"></div></div></div>
+<div id="t-ps" class="hid"><div class="card"><div class="comp"><div class="av" style="width:46px;height:46px;--c1:#5c4a45;--c2:#c9a89a">EP</div><input id="mp" placeholder="Hôm nay bạn vẽ gì? Chia sẻ tranh của ngày hôm nay…" aria-label="Bài đăng hằng ngày"><button class="ib" id="mi" aria-label="Thêm ảnh"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="m4 18 5-5 4 4 3-3 4 4"/></svg></button><button class="post-btn" id="mb" disabled>Đăng</button></div></div><div id="myp"></div></div>
+</section>
+<section class="vd"><div class="bc"><button class="btn" data-go="jobs">← Quay lại việc làm</button><span>Việc làm / <b id="d-bc"></b></span></div>
+<div class="card dcard"><div class="dban"></div><div class="dpad" id="d-body"></div></div></section>
+<aside class="right vd"><div class="card"><div style="margin-bottom:6px"><b style="font-size:18px">Gợi ý cho bạn</b><small style="display:block;color:var(--muted)">Dựa trên các tìm kiếm của bạn</small></div><div id="rec2"></div></div>
+<div class="card" id="d-co"></div>
+<button class="card cta res" data-t="Tài nguyên nghề nghiệp sẽ sớm có"><div class="resimg"></div><div><b>Tài nguyên nghề nghiệp</b><small>Mẹo làm portfolio cho cơ hội tiếp theo của bạn.</small></div></button></aside>
+<section class="vc"><div class="chd"><h2 class="ctitle">Cộng đồng</h2><label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="cq" placeholder="Tìm sự kiện hoặc phòng chat…" aria-label="Tìm sự kiện"></label></div>
+<div class="ctabs"><button class="on" data-c="all">Tất cả sự kiện</button><button data-c="rooms">Phòng chat</button><button data-c="ws">Workshop</button></div>
+<div class="cbar" id="cbar"><div class="chips" id="vch" style="margin:0"><button class="chip on" data-c="all">Tất cả</button><button class="chip" data-c="public">Công khai</button><button class="chip" data-c="personal">Cá nhân</button></div><button class="btn" id="pe-b">＋ Tạo sự kiện cá nhân</button></div>
+<div class="card hid" id="pe-f"><b>Sự kiện cá nhân mới</b><div class="pf2"><input class="fi" id="pe-t" placeholder="Tên sự kiện" aria-label="Tên sự kiện"><input class="fi" id="pe-d" type="datetime-local" aria-label="Thời gian"><input class="fi" id="pe-h" placeholder="Hashtag (không bắt buộc)" aria-label="Hashtag"></div><div class="eva" style="gap:12px"><button class="btn p" id="pe-s">Lưu sự kiện</button><button class="btn" id="pe-c">Hủy</button></div></div>
+<div id="cl"></div></section>
+<aside class="right vc"><div class="card"><b style="font-size:18px;display:block;margin-bottom:8px">Hashtag thịnh hành</b>
+<div class="tr"><button class="lnk" data-tag="StudioMeetArtist">#StudioMeetArtist</button><small>12 sự kiện</small></div>
+<div class="tr"><button class="lnk" data-tag="ProtectYourArt">#ProtectYourArt</button><small>8 sự kiện</small></div>
+<div class="tr"><button class="lnk" data-tag="ArtistConnections">#ArtistConnections</button><small>6 sự kiện</small></div></div>
+<div class="card"><b style="font-size:18px;display:block;margin-bottom:6px">Sự kiện khác</b><div id="c-more"></div><button class="lnk" data-browse style="display:block;margin:12px auto 2px">Xem tất cả sự kiện →</button></div></aside>
+
+<section class="vm"><div class="card cc" id="cc"><div class="cl2"><h3>Tin nhắn</h3><div style="padding:0 18px 10px"><label class="search" style="max-width:none;margin:0"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="chq" placeholder="Tìm cuộc trò chuyện…" aria-label="Tìm cuộc trò chuyện"></label></div><div id="cvl"></div></div>
+<div class="tw"><div class="th2" id="thh"></div><div class="msgs" id="msgs"></div><div class="cmp"><button class="ib" data-t="Đính kèm tệp sẽ sớm có" aria-label="Đính kèm"><svg viewBox="0 0 24 24"><path d="m20 11-8.5 8.5a5 5 0 0 1-7-7L13 4a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L14 7"/></svg></button><input class="fi" id="cmsg" style="flex:1" placeholder="Nhập tin nhắn…" aria-label="Tin nhắn"><button class="post-btn" id="csend">Gửi</button></div></div></div></section>
+</main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+var $=function(s){return document.querySelector(s)},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+var ICON={heart:'<svg viewBox="0 0 24 24"><path d="M12 20s-8-4.7-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6.3-8 11-8 11Z"/></svg>',
+cm:'<svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12Z"/></svg>',
+rp:'<svg viewBox="0 0 24 24"><path d="m17 2 4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"/></svg>',
+bm:'<svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z"/></svg>',
+sh:'<svg viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>',
+ck:'<svg class="ver" viewBox="0 0 24 24"><path d="M12 1.5 15 4l4-.2.8 4L23 10.5 21 14l.8 4-4 .8L15 22l-3-1.5L9 22l-2.8-3.2-4-.8L3 14 1 10.5l3.2-2.7.8-4 4 .2Z"/><path d="m8 12 3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg>'};
+var ART=[
+'linear-gradient(135deg,#f5c9b8,#e9a99a 40%,#8fa8d1)',
+'linear-gradient(160deg,#9fb8de,#f1d2c4 70%)',
+'linear-gradient(145deg,#e8e4de,#c8cfd8)',
+'linear-gradient(135deg,#b9cbe6,#dfe8f4)',
+'linear-gradient(135deg,#d7c9e6,#f0d6d0)'];
+var posts=[
+{n:'Julien Caron',i:'JC',c:['#4a4f45','#b7b59a'],r:'Motion Designer · Paris',t:'1 giờ trước',x:'Vừa hoàn thành short animation “Last Light” (42 giây) sau 6 tuần! Mình chia sẻ working process: storyboard → animatic → keyframe → compositing. Đoạn chuyển cảnh ở giây 28 là phần khó nhất, mình sẽ viết chi tiết ở bài sau. #WorkingProcess #Animation',m:[3,0,2],l:612,c2:57,s:48},
+{n:'Luca Moretti',i:'LM',c:['#3a3a44','#a9a3b0'],r:'Họa sĩ minh họa báo chí · Milan, Ý',t:'3 giờ trước',x:'Đồ án tốt nghiệp của mình: “Cities of Memory”, loạt minh họa editorial về cách ký ức định hình không gian đô thị. Gần 4 tháng từ nghiên cứu, phác thảo đến hoàn thiện. Rất mong nhận được góp ý của mọi người! #ĐồÁn #Illustration',m:[0,1,2],l:342,c2:28,s:12},
+{n:'Noah Rivera',i:'NR',c:['#3d4a5a','#9bb0c8'],r:'Nghệ sĩ 3D · Los Angeles',t:'5 giờ trước',x:'Vừa xong nhân vật 3D cho một dự án game indie. Breakdown working process: blockout → sculpt → retopo → texture → render. Mình để cả ảnh wireframe ở ảnh thứ hai cho ai muốn tham khảo. #3D #WorkingProcess',m:[4,3],l:428,c2:34,s:21},
+{n:'Aisha Khan',i:'AK',c:['#4a3a3a','#caa595'],r:'Product Designer · London, Anh',t:'6 giờ trước',x:'Case study đồ án: Bloom, ứng dụng chăm sóc tinh thần cho người làm sáng tạo. Từ research, wireframe đến prototype cuối cùng. Cảm ơn thầy cô và các bạn đã góp ý trong suốt quá trình!',m:[3,1,4],l:518,c2:41,s:36},
+{n:'Mina Sato',i:'MS',c:['#6b4f55','#e0b9b4'],r:'Nghệ nhân gốm · Tokyo',t:'Hôm qua',x:'Đồ án cuối khóa: bộ gốm “Quiet Morning”. Mình ghi lại cả quá trình tạo hình, tráng men và nung. Lần nung đầu hỏng một nửa, nhưng học được rất nhiều điều. #Ceramics #WorkingProcess',m:[2,4],l:289,c2:19,s:9}];
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function render(p,idx){
+ var md=p.m.map(function(k,j){return '<div style="background:'+ART[k]+'"></div>'}).join('');
+ return '<article class="card" data-i="'+idx+'"><div class="ph"><div class="av" style="width:44px;height:44px;--c1:'+p.c[0]+';--c2:'+p.c[1]+'">'+p.i+'</div><div><b>'+esc(p.n)+' '+ICON.ck+'</b><small>'+esc(p.r)+' · '+p.t+'</small></div><button class="ib more" aria-label="Tùy chọn" data-t="Tùy chọn bài đăng sẽ sớm có">•••</button></div>'
+ +'<p class="txt">'+esc(p.x)+'</p>'+(p.m.length?'<div class="media'+(p.m.length==1?' one':'')+'">'+md+'</div>':'')
+ +'<div class="act"><button class="lk" data-n="'+p.l+'">'+ICON.heart+'<span>'+p.l+'</span></button><button class="cmt" data-t="Bình luận sẽ sớm có">'+ICON.cm+'<span>'+p.c2+'</span></button><button class="rp" data-n="'+p.s+'">'+ICON.rp+'<span>'+p.s+'</span></button>'
+ +'<button class="sv r">'+ICON.bm+'Lưu</button><button data-share>'+ICON.sh+'Chia sẻ</button></div></article>';
+}
+function draw(){$('#feed').innerHTML=posts.map(render).join('')}
+draw();
+var tt;function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on')},1800)}
+document.addEventListener('click',function(e){
+ var b=e.target.closest('button,a[href^="#"]');if(!b)return;
+ if(b.dataset.t){toast(b.dataset.t)}
+ if(b.classList.contains('lk')||b.classList.contains('rp')){var on=b.classList.toggle('on'),n=+b.dataset.n+(on?1:0);b.querySelector('span').textContent=n}
+ if(b.classList.contains('sv')){var o=b.classList.toggle('on');if(b.closest('.row')){var p=b.querySelector('path');p.parentNode.style.fill=o?'currentColor':'none'}toast(o?'Đã lưu':'Đã bỏ lưu')}
+ if(b.hasAttribute('data-share')){toast('Đã sao chép liên kết')}
+ if(b.classList.contains('btn')&&b.parentNode.classList.contains('row')){var c=b.classList.toggle('on');b.textContent=c?'Đã gửi':'Kết nối';if(c)toast('Đã gửi lời mời kết nối')}
+ if(b.tagName=='A'&&b.closest('.side')){e.preventDefault();var h=b.getAttribute('href').slice(1);if(h=='noti'){$('#nc').textContent='0';$('#bell i').style.display='none'}else if(R[h]){location.hash=h}else{toast('Trang này sẽ sớm ra mắt')}}
+ if(b.id=='bell'){$('#bell i').style.display='none';$('#nc').textContent='0';toast('Bạn không có thông báo mới')}
+});
+/* carousel */
+var cur=0,S=$$('.hero.vh .slide'),D=$$('.hero.vh .dots i');D.forEach(function(d,i){d.style.cursor='pointer';d.onclick=function(){go(i)}});
+function go(n){cur=(n+S.length)%S.length;S.forEach(function(s,i){s.classList.toggle('on',i==cur)});D.forEach(function(d,i){d.classList.toggle('on',i==cur)})}
+$('#prev').onclick=function(){go(cur-1)};$('#next').onclick=function(){go(cur+1)};
+/* composer */
+var img=false,inp=$('#cin'),pb=$('#pbtn');
+inp.addEventListener('input',function(){pb.disabled=!inp.value.trim()});
+$('#addimg').onclick=function(){img=!img;this.classList.toggle('on',img);toast(img?'Đã đính kèm ảnh mẫu':'Đã bỏ ảnh')};
+function publish(){var v=inp.value.trim();if(!v)return;
+ posts.unshift({n:'Elena Park',i:'EP',c:['#5c4a45','#c9a89a'],r:'Nghệ sĩ đa phương tiện',t:'Vừa xong',x:v,m:img?[Math.floor(Math.random()*5)]:[],l:0,c2:0,s:0});
+ draw();inp.value='';pb.disabled=true;img=false;$('#addimg').classList.remove('on');$('#pc').textContent=+$('#pc').textContent+1;toast('Đã đăng')}
+pb.onclick=publish;inp.addEventListener('keydown',function(e){if(e.key=='Enter')publish()});
+/* search */
+$('#q').addEventListener('keydown',function(e){if(e.key=='Enter'&&this.value.trim())toast('Tìm kiếm “'+this.value.trim()+'” sẽ sớm có')});
+/* theme */
+$('#theme').onclick=function(){var r=document.documentElement,d=r.getAttribute('data-theme')=='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);r.setAttribute('data-theme',d?'light':'dark')};
+
+/* routing */
+var R={home:1,jobs:1,profile:1,community:1,chat:1};
+/* route defined below */
+/* jobs */
+var JOBS=[['Visual Designer','Studio Solis','Từ xa','Full-time','Visual Design','Đăng 2 ngày trước',0,'S','#1c2430'],
+['Motion Graphics Artist','Lumen Creative','Hybrid · New York, NY','Contract','Motion Design','Hợp đồng 6 tháng',2,'L','#7f8fe0'],
+['Concept Artist','Northlight Studio','Burbank, CA','Full-time','Concept Art','Đăng 4 ngày trước',1,'N','#4d6fa8'],
+['Art Director','Atelier 24','Tại văn phòng · Los Angeles, CA','Full-time','Art Direction','Đăng 5 ngày trước',4,'A','#2d2d35'],
+['Illustrator (Campaign)','Paper Kite','Từ xa','Freelance','Illustration','Đăng 1 tuần trước',3,'P','#4f9a6b'],
+['Gallery Content Artist','Form Lab','Amsterdam','Part-time','Digital Art','Đăng 1 tuần trước',2,'F','#c26b7a'],
+['Design Intern','Studio Solis','Từ xa','Internship','Product Design','Đăng 2 tuần trước',0,'S','#1c2430']];
+var jt='all',SV={};
+function rj(){var q=$('#jq').value.toLowerCase().trim(),L=[];
+ JOBS.forEach(function(j,i){if((jt=='all'||j[3]==jt)&&j.join(' ').toLowerCase().indexOf(q)>-1)L.push('<article class="card job" data-open="'+i+'" tabindex="0"><div class="logoj" style="background:'+j[8]+'">'+j[7]+'</div><div class="jb"><div class="jt"><b>'+j[0]+'</b><button class="ib sv'+(SV[i]?' on':'')+'" data-k="'+i+'" aria-label="Lưu việc làm">'+ICON.bm+'</button></div><small>'+j[1]+' · '+j[2]+'</small><div class="jm"><span>'+j[3]+'</span><span>'+j[4]+'</span><span>'+j[5]+'</span></div></div><div class="jimg" style="background:'+ART[j[6]]+'"></div></article>')});
+ $('#jl').innerHTML=L.length?L.join(''):'<div class="card" style="text-align:center;color:var(--muted)">Không tìm thấy việc làm phù hợp. Hãy thử đổi từ khóa hoặc bộ lọc.</div>'}
+$('#jq').addEventListener('input',rj);$('#jsb').onclick=rj;rj();
+/* portfolio */
+var WK=[['Fading Bloom','Digital Painting','Dự án cá nhân','Loạt tranh ghi lại vẻ đẹp của sự phai tàn, khám phá cách ký ức và cảm xúc còn đọng lại qua thiên nhiên, đặc biệt là những bông hoa.','2024','3000 × 2000 px','Digital Painting (Procreate)'],
+['Soft Reverie','Illustration','Dự án cá nhân','Chân dung nhẹ nhàng giữa những cánh hoa, về khoảnh khắc nghỉ ngơi và mơ màng.','2024','2400 × 3000 px','Procreate'],
+['Lavender Dusk','Digital Painting','Đặt hàng','Hoàng hôn tím hồng trên thung lũng, vẽ cho một tuyển tập sách ảnh.','2023','4000 × 2000 px','Digital Painting (Photoshop)'],
+['Mountain Hours','3D','Dự án cá nhân','Dải núi dựng khối 3D với ánh sáng buổi sớm, thử nghiệm chất liệu giấy.','2023','3840 × 2160 px','Blender'],
+['Window Light','Mixed Media','Dự án cá nhân','Bình hoa bên cửa sổ, kết hợp màu nước scan và chỉnh sửa kỹ thuật số.','2022','3000 × 3000 px','Màu nước + Digital'],
+['Drifting Skirt','Illustration','Đặt hàng','Cô gái giữa bầu trời chiều, minh họa cho bìa một tập truyện ngắn.','2022','2800 × 3600 px','Procreate']];
+var WB=['radial-gradient(circle at 32% 42%,#fff 0 16%,transparent 17%),radial-gradient(circle at 66% 55%,#f3b7c5 0 22%,transparent 23%),linear-gradient(135deg,#b9a7e0,#e9c1d4)',
+'radial-gradient(circle at 50% 45%,#f7d9cf 0 24%,transparent 25%),radial-gradient(circle at 20% 80%,#f0a9b8 0 14%,transparent 15%),linear-gradient(160deg,#8d99ae,#e6c9c0)',
+'radial-gradient(circle at 70% 25%,#fff3e6 0 8%,transparent 9%),linear-gradient(180deg,#a99be0,#f0b6c0 60%,#8fa8d1)',
+'linear-gradient(160deg,transparent 55%,#6d7fb0 56%),linear-gradient(200deg,transparent 45%,#9aa7d4 46%),linear-gradient(180deg,#f2c1b4,#b9c7e8)',
+'radial-gradient(circle at 60% 40%,#fff 0 14%,transparent 15%),linear-gradient(120deg,#f4ede6,#d3dbe8)',
+'radial-gradient(circle at 40% 60%,#fff 0 18%,transparent 19%),linear-gradient(180deg,#9fb8de,#f3d1c7)'];
+var pcat='all',sel=0;
+function rw(){var L=[];WK.forEach(function(w,i){if(pcat=='all'||w[1]==pcat)L.push(i)});
+ if(L.length&&L.indexOf(sel)<0)sel=L[0];
+ $('#wgrid').innerHTML=L.length?L.map(function(i){return '<button class="w'+(i==sel?' on':'')+'" data-i="'+i+'" style="background:'+WB[i]+'" aria-label="'+WK[i][0]+'"><span>'+WK[i][0]+'</span></button>'}).join(''):'<p style="color:var(--muted)">Chưa có tác phẩm trong mục này.</p>';
+ var w=WK[sel],g=['0 0','100% 0','50% 100%'].map(function(p){return '<div style="background:'+WB[sel]+';background-size:240%;background-position:'+p+'"></div>'}).join('');
+ $('#wd').style.display=L.length?'':'none';
+ $('#wd').innerHTML='<h3>'+w[0]+'</h3><div class="tg"><span>'+w[1]+'</span><span>'+w[2]+'</span></div><p style="color:var(--muted);margin:6px 0">'+w[3]+'</p><ul class="dl"><li>'+w[4]+'</li><li>'+w[5]+'</li><li>'+w[6]+'</li></ul><b>Thư viện dự án</b><div class="gal">'+g+'</div>'}
+rw();
+/* profile posts */
+var mine=[{n:'Elena Park',i:'EP',c:['#5c4a45','#c9a89a'],r:'Nghệ sĩ đa phương tiện',t:'Hôm nay',x:'Phác thảo buổi sáng, ánh nắng len qua cửa sổ. Mỗi ngày một bức nhỏ để giữ tay luôn ấm.',m:[1],l:86,c2:9,s:2},
+{n:'Elena Park',i:'EP',c:['#5c4a45','#c9a89a'],r:'Nghệ sĩ đa phương tiện',t:'Hôm qua',x:'Thử bảng màu hoàng hôn cho loạt tranh mới. Bạn thích tím hay hồng hơn?',m:[0,3],l:142,c2:23,s:5},
+{n:'Elena Park',i:'EP',c:['#5c4a45','#c9a89a'],r:'Nghệ sĩ đa phương tiện',t:'3 ngày trước',x:'Ghi chú nhanh về cách mình pha màu cho cánh hoa. Sẽ đăng quá trình đầy đủ sớm.',m:[],l:57,c2:6,s:1}];
+function dm(){$('#myp').innerHTML=mine.map(render).join('')}dm();
+var mimg=false,mp=$('#mp'),mb=$('#mb');
+mp.addEventListener('input',function(){mb.disabled=!mp.value.trim()});
+$('#mi').onclick=function(){mimg=!mimg;this.classList.toggle('on',mimg);toast(mimg?'Đã đính kèm ảnh mẫu':'Đã bỏ ảnh')};
+function mpub(){var v=mp.value.trim();if(!v)return;mine.unshift({n:'Elena Park',i:'EP',c:['#5c4a45','#c9a89a'],r:'Nghệ sĩ đa phương tiện',t:'Vừa xong',x:v,m:mimg?[Math.floor(Math.random()*5)]:[],l:0,c2:0,s:0});dm();mp.value='';mb.disabled=true;mimg=false;$('#mi').classList.remove('on');toast('Đã đăng')}
+mb.onclick=mpub;mp.addEventListener('keydown',function(e){if(e.key=='Enter')mpub()});
+document.addEventListener('click',function(e){var t=e.target,x;
+ if(x=t.closest('[data-go]'))location.hash=x.dataset.go;
+ if(x=t.closest('#jch .chip')){jt=x.dataset.c;$$('#jch .chip').forEach(function(c){c.classList.toggle('on',c==x)});rj()}
+ if(x=t.closest('.sv[data-k]')){SV[x.dataset.k]=x.classList.contains('on');if(x.classList.contains('dsv'))$$('.dsv').forEach(function(b){b.classList.toggle('on',SV[x.dataset.k])})}
+ if((x=t.closest('[data-open]'))&&!t.closest('.sv'))location.hash='job-'+x.dataset.open;
+ if(x=t.closest('#pch .chip')){pcat=x.dataset.c;$$('#pch .chip').forEach(function(c){c.classList.toggle('on',c==x)});rw()}
+ if(x=t.closest('.w')){sel=+x.dataset.i;rw()}
+ if(x=t.closest('.pt button')){$$('.pt button').forEach(function(b){b.classList.toggle('on',b==x)});$('#t-pf').classList.toggle('hid',x.dataset.p!='pf');$('#t-ps').classList.toggle('hid',x.dataset.p!='ps')}
+});
+document.addEventListener('keydown',function(e){if(e.key=='Enter'&&e.target.dataset&&e.target.dataset.go)location.hash=e.target.dataset.go});
+
+var JD=[
+['Mid-level','Thứ Hai–Thứ Sáu · 40 giờ/tuần','3+ năm','Thỏa thuận khi phỏng vấn','Biến ý tưởng thành câu chuyện hình ảnh. Tham gia đội sáng tạo của Studio Solis để định hình các chiến dịch số, trải nghiệm thương hiệu và nội dung kết nối với khách hàng.',['Tạo concept hình ảnh cho chiến dịch số và câu chuyện thương hiệu.','Thiết kế asset cho mạng xã hội, web và các đợt ra mắt sản phẩm.','Phối hợp với art director, copywriter và đội marketing.'],['3+ năm kinh nghiệm thiết kế hình ảnh hoặc đồ họa.','Portfolio mạnh về nhận diện thương hiệu và thiết kế số.','Thành thạo Figma, Photoshop và Illustrator.','Giao tiếp rõ ràng, chú ý chi tiết.'],['Branding','Typography','Figma','Adobe Creative Cloud'],'Thiết kế tương lai của ngành sáng tạo.','Studio thiết kế','50–200 nhân sự','https://example.com/careers/visual-designer'],
+['Mid-level','Thứ Hai–Thứ Sáu · 3 ngày tại văn phòng','2+ năm','Theo hợp đồng, thương lượng','Dựng chuyển động cho quảng cáo, mạng xã hội và nội dung thương hiệu trong đội motion nhỏ của Lumen Creative.',['Thiết kế và dựng motion graphics cho video quảng cáo và social.','Chuyển storyboard của art director thành hoạt ảnh hoàn chỉnh.','Chuẩn hóa thư viện template motion cho cả đội.'],['2+ năm kinh nghiệm motion graphics.','Thành thạo After Effects, biết Cinema 4D là lợi thế.','Showreel thể hiện tư duy nhịp điệu và bố cục.'],['After Effects','Cinema 4D','Storyboard','Typography'],'Agency sáng tạo cho thương hiệu thế hệ mới.','Agency sáng tạo','20–50 nhân sự','https://example.com/careers/motion-graphics-artist'],
+['Senior','Thứ Hai–Thứ Sáu · 40 giờ/tuần','5+ năm','Thỏa thuận khi phỏng vấn','Xây dựng thế giới và nhân vật cho các dự án phim hoạt hình và game của Northlight Studio.',['Vẽ concept môi trường, nhân vật và đạo cụ từ brief của đạo diễn.','Phát triển bảng màu và ngôn ngữ hình ảnh cho từng dự án.','Làm việc cùng đội 3D và hoạt hình để chuyển concept thành sản phẩm.'],['5+ năm kinh nghiệm concept art.','Nền tảng vững về ánh sáng, phối cảnh và giải phẫu.','Thành thạo Photoshop hoặc Procreate.'],['Concept Art','Digital Painting','Photoshop','Worldbuilding'],'Studio hoạt hình kể chuyện bằng màu sắc.','Hoạt hình và giải trí','200–500 nhân sự','https://example.com/careers/concept-artist'],
+['Senior','Thứ Hai–Thứ Sáu · Tại văn phòng','7+ năm','Thỏa thuận khi phỏng vấn','Dẫn dắt định hướng hình ảnh cho các chiến dịch và ấn phẩm của Atelier 24.',['Xây dựng định hướng nghệ thuật cho chiến dịch và poster.','Dẫn dắt đội thiết kế, minh họa và nhiếp ảnh.','Làm việc với khách hàng để duyệt concept và chất lượng cuối.'],['7+ năm kinh nghiệm, ít nhất 2 năm ở vị trí dẫn dắt.','Portfolio thể hiện gu thẩm mỹ rõ ràng.','Kỹ năng trình bày và quản lý đội nhóm tốt.'],['Art Direction','Branding','Leadership','Layout'],'Hãng sản xuất độc lập với gu hình ảnh riêng.','Sản xuất và xuất bản','50–200 nhân sự','https://example.com/careers/art-director'],
+['Mid-level','Linh hoạt · Theo dự án','3+ năm','Theo dự án, thương lượng','Minh họa cho chiến dịch quảng bá nhiều kênh của Paper Kite, làm việc từ xa theo từng đợt.',['Vẽ bộ minh họa chủ đạo và các biến thể cho nhiều kênh.','Chỉnh sửa theo góp ý của art director.','Bàn giao file nguồn đúng hạn.'],['3+ năm kinh nghiệm minh họa thương mại.','Phong cách riêng, nhất quán.','Thành thạo Procreate hoặc Illustrator.'],['Illustration','Procreate','Illustrator','Color'],'Thương hiệu giấy và quà tặng thủ công.','Bán lẻ sáng tạo','10–50 nhân sự','https://example.com/careers/illustrator-campaign'],
+['Junior','20 giờ/tuần','1+ năm','Theo giờ, thương lượng','Tạo nội dung hình ảnh cho triển lãm và gallery trực tuyến của Form Lab.',['Chuẩn bị hình ảnh và bố cục cho các triển lãm số.','Viết chú thích tác phẩm cùng đội curator.','Cập nhật nội dung gallery hằng tuần.'],['1+ năm kinh nghiệm thiết kế hoặc biên tập hình ảnh.','Mắt thẩm mỹ tốt, tỉ mỉ.','Thành thạo Photoshop và Figma.'],['Photoshop','Figma','Curation','Layout'],'Phòng thí nghiệm thiết kế sản phẩm và triển lãm.','Thiết kế và triển lãm','10–50 nhân sự','https://example.com/careers/gallery-content-artist'],
+['Intern','Thứ Hai–Thứ Sáu · 3 tháng','Không yêu cầu','Có hỗ trợ thực tập, trao đổi khi phỏng vấn','Thực tập cùng đội thiết kế sản phẩm của Studio Solis và học quy trình làm việc thực tế.',['Hỗ trợ thiết kế giao diện và asset cho dự án.','Tham gia họp review và nhận phản hồi trực tiếp.','Thực hiện một dự án nhỏ của riêng bạn.'],['Sinh viên hoặc mới tốt nghiệp ngành thiết kế.','Có portfolio với ít nhất 3 dự án.','Biết sử dụng Figma.'],['Figma','UI Design','Portfolio','Teamwork'],'Thiết kế tương lai của ngành sáng tạo.','Studio thiết kế','50–200 nhân sự','https://example.com/careers/design-intern']];
+function li(a){return '<ul>'+a.map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul>'}
+function recs(el,ex,n){var o=[];JOBS.forEach(function(j,i){if(i!=ex&&o.length<n)o.push('<div class="row" data-open="'+i+'" tabindex="0"><div class="logoj" style="background:'+j[8]+'">'+j[7]+'</div><div><b>'+j[0]+'</b><small>'+j[1]+' · '+j[3]+'</small></div><button class="ib sv'+(SV[i]?' on':'')+'" data-k="'+i+'" aria-label="Lưu việc làm">'+ICON.bm+'</button></div>')});$(el).innerHTML=o.join('')}
+function showJob(i){var j=JOBS[i],d=JD[i],sv=SV[i]?' on':'';$('#d-bc').textContent=j[0];
+ $('#d-body').innerHTML='<div class="dh"><div class="logoj" style="background:'+j[8]+'">'+j[7]+'</div><div><h2>'+j[0]+'</h2><b>'+j[1]+' '+ICON.ck+'</b><div style="color:var(--muted)">'+j[2]+'</div></div><div class="acts"><button class="ib sv dsv'+sv+'" data-k="'+i+'" aria-label="Lưu việc làm">'+ICON.bm+'</button><button class="ib" data-share aria-label="Chia sẻ">'+ICON.sh+'</button></div></div>'
+ +'<div class="pills"><span>'+j[3]+'</span><span>'+j[4]+'</span><span>'+d[0]+'</span><span style="border:0;color:var(--muted)">'+j[5]+'</span></div>'
+ +'<div class="ig"><div><b>Lịch làm việc</b><small>'+d[1]+'</small></div><div><b>Địa điểm</b><small>'+j[2]+'</small></div><div><b>Kinh nghiệm</b><small>'+d[2]+'</small></div><div><b>Thu nhập</b><small>'+d[3]+'</small></div></div>'
+ +'<div class="dact"><a class="btn p" href="'+d[11]+'" target="_blank" rel="noopener">Ứng tuyển trên website công ty ↗</a><button class="btn sv dsv'+sv+'" data-k="'+i+'">'+ICON.bm+'Lưu việc</button></div><small style="color:var(--muted)">Gửi portfolio và CV qua trang tuyển dụng của '+j[1]+'.</small>'
+ +'<div class="dsec"><h3>Về vị trí</h3><p>'+d[4]+'</p><h3>Bạn sẽ làm gì</h3>'+li(d[5])+'<h3>Yêu cầu</h3>'+li(d[6])+'<h3>Kỹ năng</h3><div class="sk">'+d[7].map(function(k){return '<span>'+k+'</span>'}).join('')+'</div></div>';
+ $('#d-co').innerHTML='<div class="ph"><div class="logoj" style="background:'+j[8]+'">'+j[7]+'</div><div><b style="font-size:17px">Về '+j[1]+'</b><small>'+d[8]+'</small></div></div><div class="pl" style="margin:14px 0 8px"><span>'+d[9]+'</span><span>'+d[10]+'</span></div><button style="border:0;background:none;color:var(--accent);padding:0;font-weight:500" data-t="Hồ sơ công ty sẽ sớm có">Xem hồ sơ công ty →</button>';
+ recs('#rec2',i,4)}
+recs('#rec1',-1,3);
+function route(){var h=location.hash.slice(1)||'home',m=/^job-(\d+)$/.exec(h);
+ if(m&&JOBS[+m[1]]){showJob(+m[1]);h='jobd'}else if(!R[h])return;
+ document.body.className=h;var g=h=='jobd'?'jobs':h;
+ $$('.tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.go==g)});
+ $$('.side a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')=='#'+g)});scrollTo(0,0)}
+addEventListener('hashchange',route);
+document.addEventListener('keydown',function(e){if(e.key=='Enter'&&e.target.dataset&&e.target.dataset.open)location.hash='job-'+e.target.dataset.open});
+/* community */
+var gn=0;
+function pl(x,y,z){return '<g transform="translate('+x+' '+y+') scale('+z+')"><path d="M-14 0h28l-5 22h-18z" fill="#f4f6fb"/><ellipse cx="-10" cy="-14" rx="6" ry="16" fill="#7fa88a" transform="rotate(-25 -10 -14)"/><ellipse cx="0" cy="-20" rx="6" ry="18" fill="#8fb89a"/><ellipse cx="10" cy="-14" rx="6" ry="16" fill="#6f9a7b" transform="rotate(25 10 -14)"/></g>'}
+function fr(x,y,w,h,c){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="3" fill="#fff" stroke="#b9cbe6"/><path d="M'+(x+4)+' '+(y+h-4)+'L'+(x+w*.35)+' '+(y+h*.35)+'L'+(x+w*.55)+' '+(y+h*.6)+'L'+(x+w*.75)+' '+(y+h*.4)+'L'+(x+w-4)+' '+(y+h-4)+'Z" fill="'+c+'"/>'}
+var DESK='<rect y="104" width="600" height="26" fill="#dfe8f4"/>';
+function lap(){return '<path d="M200 106h200l14 10H186z" fill="#c6d3e8"/><rect x="214" y="22" width="172" height="84" rx="6" fill="#4a5c7c"/><rect x="222" y="30" width="156" height="68" rx="3" fill="#eef3fb"/>'}
+function art(k,alt){var id='g'+gn++,C=['#8fa8d1','#f1b8c4','#a9bde0','#f6d6a8','#b9a7e0','#9fcfb5'],b='';
+if(k=='a')b=DESK+pl(70,98,1.5)+fr(200,20,70,52,'#8fa8d1')+fr(280,10,60,70,'#a9bde0')+fr(350,24,56,44,'#8fa8d1')+'<path d="M450 104v-40l30-30" stroke="#5c6b86" stroke-width="5" fill="none"/><path d="M465 28l30-4 6 24z" fill="#4a5c7c"/>'+pl(545,98,1.4);
+if(k=='b')b=DESK+pl(60,98,1.4)+'<path d="M170 100l40-62h170l30 62z" fill="#4a5c7c"/><path d="M215 44h158l22 50H196z" fill="#a9bde0"/><path d="M215 94l50-34 30 18 40-28 55 44z" fill="#8fa8d1"/><path d="M470 14l40 14v30c0 24-18 38-40 46-22-8-40-22-40-46V28z" fill="#e6efff" stroke="#8fa8d1" stroke-width="3"/><rect x="458" y="50" width="24" height="20" rx="4" fill="#6b8cb8"/><path d="M462 50v-6a8 8 0 0116 0v6" stroke="#6b8cb8" stroke-width="3" fill="none"/>';
+if(k=='c'){b=DESK+pl(80,98,1.4)+'<path d="M235 70c0-32 42-52 92-46 42 5 62 32 42 58-14 18-40 6-52 18-12 14-82 12-82-30z" fill="#fff" stroke="#b9cbe6"/>';[[268,56],[298,38],[334,44],[360,68],[290,84]].forEach(function(p,i){b+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="11" fill="'+C[i]+'"/>'});b+='<path d="M410 100l56-66" stroke="#c9a77f" stroke-width="7" stroke-linecap="round"/><path d="M462 40l14-18" stroke="#6b8cb8" stroke-width="9" stroke-linecap="round"/>'+pl(550,98,1.3)}
+if(k=='d'){b=DESK+pl(80,98,1.4)+lap();for(var i=0;i<6;i++)b+='<rect x="'+(230+(i%3)*58)+'" y="'+(36+Math.floor(i/3)*32)+'" width="48" height="26" rx="3" fill="'+C[i]+'"/>';b+='<rect x="430" y="30" width="96" height="28" rx="14" fill="#fff" stroke="#b9cbe6"/><rect x="460" y="68" width="96" height="28" rx="14" fill="#6b8cb8"/>'}
+if(k=='e')b=DESK+pl(70,98,1.4)+'<path d="M210 40l90-8 90 8v62l-90-8-90 8z" fill="#fff" stroke="#b9cbe6"/><path d="M300 32v62" stroke="#b9cbe6"/><path d="M225 82l22-26 18 14 22-22" stroke="#6b8cb8" stroke-width="3" fill="none"/><circle cx="345" cy="62" r="14" fill="#f1b8c4"/><circle cx="345" cy="62" r="5" fill="#f6d6a8"/><path d="M410 98l60-48" stroke="#e6b66a" stroke-width="8" stroke-linecap="round"/><path d="M510 104v-40l-26-24" stroke="#5c6b86" stroke-width="5" fill="none"/><path d="M470 34l26-8 8 22z" fill="#4a5c7c"/>';
+if(k=='f')b=DESK+pl(150,98,1.6)+'<ellipse cx="300" cy="106" rx="56" ry="9" fill="#fff"/><path d="M262 62h76v22c0 16-14 24-38 24s-38-8-38-24z" fill="#fff" stroke="#b9cbe6"/><path d="M338 68h12a12 12 0 010 24h-14" stroke="#b9cbe6" stroke-width="5" fill="none"/><ellipse cx="300" cy="64" rx="38" ry="7" fill="#c9a77f"/><path d="M300 68l-8-6a5 5 0 018-4 5 5 0 018 4z" fill="#f6ebe0"/><path d="M286 46c-6-8 6-14 0-24M306 46c-6-8 6-14 0-24" stroke="#9db0cf" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M420 100l56-50" stroke="#e6b66a" stroke-width="8" stroke-linecap="round"/>';
+if(k=='g')b=DESK+pl(80,98,1.4)+lap()+'<rect x="232" y="38" width="80" height="22" rx="11" fill="#fff" stroke="#b9cbe6"/><rect x="288" y="68" width="80" height="22" rx="11" fill="#6b8cb8"/><text x="244" y="54" font-size="14" font-weight="700" fill="#6b8cb8" font-family="sans-serif">Q?</text><text x="304" y="84" font-size="14" font-weight="700" fill="#fff" font-family="sans-serif">A!</text><rect x="440" y="34" width="90" height="26" rx="13" fill="#fff" stroke="#b9cbe6"/>'+pl(560,98,1.2);
+if(k=='h')b=fr(110,22,64,80,'#a9bde0')+fr(450,18,70,84,'#8fa8d1')+'<path d="M262 76C250 18 350 18 338 76c4 30-8 44-14 48 6-28-4-34-24-44-14 10-30 8-38-4z" fill="#6b8cb8"/><path d="M262 76c-30 20-18 48-38 54h32c12-10 14-30 6-54zM338 76c30 20 18 48 38 54h-32c-12-10-14-30-6-54z" fill="#7d9cc6"/><circle cx="300" cy="78" r="27" fill="#f6dccb"/><path d="M288 78q5 4 10 0M306 78q5 4 10 0" stroke="#4a5c7c" stroke-width="2" fill="none"/><circle cx="283" cy="88" r="5" fill="#f1b8c4" opacity=".7"/><circle cx="317" cy="88" r="5" fill="#f1b8c4" opacity=".7"/><circle cx="332" cy="52" r="9" fill="#f1b8c4"/><circle cx="332" cy="52" r="3" fill="#f6d6a8"/>';
+return '<svg viewBox="0 0 600 130" preserveAspectRatio="xMidYMid slice" role="img" aria-label="'+esc(alt||'')+'"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dce8f7"/><stop offset="1" stop-color="#f6ebe6"/></linearGradient></defs><rect width="600" height="130" fill="url(#'+id+')"/>'+b+'</svg>'}
+var EV=[
+{id:0,t:'Studio Meet Artist',d:'Gặp gỡ các studio sáng tạo và tìm cơ hội hợp tác tiếp theo của bạn.',when:'28 Th11 · 19:00 (GMT+7)',tag:'StudioMeetArtist',sp:24,vis:'public',type:'event',img:'a',more:'Buổi gặp mặt trực tuyến giữa các studio và nghệ sĩ: giới thiệu dự án, chia sẻ nhu cầu tuyển dụng và kết nối trực tiếp.'},
+{id:1,t:'Protect Your Art',d:'Tìm hiểu cách bảo vệ tác phẩm, ghi nguồn và chia sẻ an toàn hơn.',when:'1 Th12 · 20:00 (GMT+7)',tag:'ProtectYourArt',sp:18,vis:'public',type:'event',img:'b',more:'Hướng dẫn thực tế về chống thu thập dữ liệu bởi AI, watermark, ghi nguồn tác phẩm và các thiết lập chia sẻ an toàn trên Artkive.'},
+{id:2,t:'Color Theory for Digital Painting',d:'Workshop thực hành phối màu cho tranh kỹ thuật số.',when:'5 Th12 · 19:30 (GMT+7)',tag:'ArtistWorkshop',sp:30,vis:'public',type:'ws',img:'c',more:'Thực hành xây dựng bảng màu, ánh sáng và cảm xúc qua màu sắc. Mang theo file đang vẽ dở để được góp ý.'},
+{id:3,t:'Portfolio Review Night',d:'Nhận góp ý trực tiếp cho portfolio từ các art director.',when:'8 Th12 · 20:00 (GMT+7)',tag:'ArtistConnections',sp:12,vis:'public',type:'event',img:'d',more:'Mỗi người có 10 phút trình bày portfolio và nhận phản hồi. Vui lòng gửi link portfolio trước buổi review.'},
+{id:4,t:'Weekly Sketch Night',d:'Buổi vẽ nhanh hằng tuần cùng nhóm bạn thân.',when:'Thứ Tư hằng tuần · 21:00 (GMT+7)',tag:'SketchNight',inv:4,vis:'personal',type:'event',img:'e',more:'Mỗi tuần một chủ đề, vẽ trong 45 phút rồi cùng chia sẻ.',mine:1},
+{id:5,t:'Sketch & Sip',when:'23 Th11',tag:'SketchAndSip',sp:40,vis:'public',type:'event',img:'f',side:1},
+{id:6,t:'Freelance Artist Q&A',when:'25 Th11',tag:'FreelanceQA',sp:60,vis:'public',type:'event',img:'g',side:1},
+{id:7,t:'Character Design Meetup',when:'30 Th11',tag:'CharacterDesign',sp:35,vis:'public',type:'event',img:'h',side:1}];
+var RM=[['Artist Lounge',24],['Portfolio Feedback Room',18],['Daily Sketch Hour',31],['Job Hunters Corner',12]];
+var ctab='all',cvis='all',J={},RJ={},nid=100;
+function cm(e){var p=e.vis=='personal',left=e.sp-(J[e.id]?1:0);
+ return '<article class="card ev"><div class="evimg">'+art(e.img,e.t)+'</div><h3>'+esc(e.t)+(p?' <span class="badge">Cá nhân</span>':' <span class="badge pub">Công khai</span>')+'</h3><p class="evd">'+esc(e.d)+'</p><div class="evm">'+e.when+' · Online</div><button class="lnk" data-tag="'+esc(e.tag)+'">#'+esc(e.tag)+'</button>'
+ +(p?'<div class="spots"><b>'+e.inv+' bạn bè đã được mời</b><span>Chỉ người được mời</span></div>':'<div class="spots"><b>Còn '+left+' chỗ</b><span>Số lượng có hạn</span></div>')
+ +'<div class="eva">'+(p?'<button class="btn p" data-t="Đã sao chép liên kết mời">Mời bạn bè</button>'+(e.mine&&e.id>=100?'<button class="lnk pe-del" data-k="'+e.id+'">Xóa</button>':''):'<button class="btn p jn'+(J[e.id]?' on':'')+'" data-k="'+e.id+'">'+(J[e.id]?'Đã tham gia ✓':'Tham gia')+'</button>')+'<button class="lnk mi" data-k="'+e.id+'">Xem thêm ↗</button></div><p class="evmore hid" id="mo'+e.id+'">'+esc(e.more||'')+'</p></article>'}
+function rc(){var q=$('#cq').value.toLowerCase().replace('#','').trim(),h='';
+ var L=EV.filter(function(e){return !e.side&&(ctab!='ws'||e.type=='ws')&&(cvis=='all'||e.vis==cvis)&&(e.t+' '+e.tag).toLowerCase().indexOf(q)>-1});
+ if(ctab!='rooms')h+=L.length?L.map(cm).join(''):'<div class="card empty">Không tìm thấy sự kiện phù hợp.</div>';
+ if(ctab!='ws'){var r=RM.map(function(x,i){return x[0].toLowerCase().indexOf(q)>-1?'<div class="rr"><b style="font-weight:500">'+x[0]+'</b><span>'+(x[1]+(RJ[i]?1:0))+' đang online</span><button class="lnk rj" data-k="'+i+'">'+(RJ[i]?'Đã vào phòng ✓':'Vào phòng →')+'</button></div>':''}).join('');
+  h+='<div class="card rooms"><b style="font-size:18px">Phòng chat trực tiếp<i class="live"></i></b><div style="margin-top:8px">'+(r||'<p class="empty">Không có phòng phù hợp.</p>')+'</div></div>'}
+ $('#cl').innerHTML=h;$('#cbar').style.display=ctab=='rooms'?'none':''}
+function rs(){$('#c-more').innerHTML=EV.filter(function(e){return e.side}).map(function(e){return '<div class="sevr"><div class="thumb">'+art(e.img,e.t)+'</div><div><b>'+e.t+'</b><small>'+e.when+' · Online</small></div><button class="lnk jn'+(J[e.id]?' on':'')+'" data-k="'+e.id+'">'+(J[e.id]?'Đã tham gia ✓':'Tham gia →')+'</button></div>'}).join('')}
+rc();rs();
+$('#cq').addEventListener('input',rc);
+function evOf(k){return EV.filter(function(e){return e.id==k})[0]}
+document.addEventListener('click',function(e){var t=e.target,x;
+ if(x=t.closest('.ctabs button')){ctab=x.dataset.c;$$('.ctabs button').forEach(function(b){b.classList.toggle('on',b==x)});rc()}
+ if(x=t.closest('#vch .chip')){cvis=x.dataset.c;$$('#vch .chip').forEach(function(c){c.classList.toggle('on',c==x)});rc()}
+ if(x=t.closest('[data-tag]')){$('#cq').value='#'+x.dataset.tag;ctab='all';$$('.ctabs button').forEach(function(b){b.classList.toggle('on',b.dataset.c=='all')});rc();scrollTo(0,0)}
+ if(x=t.closest('.jn')){var k=x.dataset.k;J[k]=!J[k];rc();rs();toast(J[k]?'Đã đăng ký tham gia':'Đã hủy tham gia')}
+ if(x=t.closest('.mi')){$('#mo'+x.dataset.k).classList.toggle('hid')}
+ if(x=t.closest('.rj')){var i=x.dataset.k;RJ[i]=!RJ[i];rc();toast(RJ[i]?'Đã vào phòng '+RM[i][0]:'Đã rời phòng')}
+ if(x=t.closest('.pe-del')){EV=EV.filter(function(v){return v.id!=x.dataset.k});rc();toast('Đã xóa sự kiện')}
+ if(t.closest('[data-browse]')){$('#cq').value='';ctab='all';cvis='all';$$('.ctabs button').forEach(function(b){b.classList.toggle('on',b.dataset.c=='all')});$$('#vch .chip').forEach(function(c){c.classList.toggle('on',c.dataset.c=='all')});rc();scrollTo(0,0)}
+ if(t.closest('#pe-b'))$('#pe-f').classList.toggle('hid');
+ if(t.closest('#pe-c'))$('#pe-f').classList.add('hid');
+ if(t.closest('#pe-s')){var n=$('#pe-t').value.trim();if(!n){toast('Hãy nhập tên sự kiện');return}
+  var v=$('#pe-d').value,w='Chưa đặt thời gian';if(v){var d=new Date(v);w=d.getDate()+' Th'+(d.getMonth()+1)+' · '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)+' (GMT+7)'}
+  var g=$('#pe-h').value.replace(/[^A-Za-z0-9]/g,'')||'MyEvent';
+  EV.unshift({id:nid++,t:n,d:'Sự kiện cá nhân của bạn.',when:w,tag:g,inv:0,vis:'personal',type:'event',img:'e',more:'Chỉ bạn và những người được mời mới thấy sự kiện này.',mine:1});
+  $('#pe-t').value='';$('#pe-d').value='';$('#pe-h').value='';$('#pe-f').classList.add('hid');rc();toast('Đã tạo sự kiện cá nhân')}
+});
+/* chat */
+var CV=[
+{n:'Hana Lee',i:'HL',c:['#4a5f80','#a9bde0'],r:'Art Director · Paper Kite',u:0,m:[
+[2,'t','Hôm nay',''],
+[0,'t','Chào Elena, mình là Hana từ Paper Kite. Mình rất thích loạt Fading Bloom trong portfolio của bạn.','10:12'],
+[0,'t','Bên mình đang cần một minh họa bìa cho tập truyện ngắn mùa xuân. Tháng 12 bạn còn nhận commission không?','10:13'],
+[1,'t','Chào Hana, cảm ơn bạn! Mình vẫn còn nhận 1–2 dự án trong tháng 12. Bạn cho mình biết thêm về brief nhé: kích thước, số lượng minh họa và deadline.','10:25'],
+[0,'t','Cần 1 bìa chính (3000 × 4500 px) và 3 minh họa nhỏ bên trong. Giao bản cuối trước 20/12. Ngân sách khoảng 900 USD cho cả gói.','10:31'],
+[0,'f',{name:'Brief_BiaTruyen.pdf',sz:'1,2 MB'},'10:32'],
+[1,'t','Mình đã xem brief. Với phạm vi này, mình xin báo giá như bên dưới nhé.','10:40'],
+[1,'q',{t:'Bìa truyện ngắn mùa xuân',a:'1.000 USD',d:'20/12',n:'1 bìa + 3 minh họa · 2 vòng chỉnh sửa · đặt cọc 40% trước khi bắt đầu'},'10:41'],
+[0,'t','Mình trao đổi lại với team rồi báo bạn. Về bản quyền, bên mình chỉ dùng cho in ấn và online, không dùng cho mục đích khác.','10:48'],
+[1,'t','Ok, mình sẽ ghi rõ trong hợp đồng: quyền sử dụng cho in ấn và online, và tác phẩm không được dùng để huấn luyện AI nhé.','10:52'],
+[0,'t','Hoàn toàn đồng ý! Mình sẽ gửi hợp đồng và lịch thanh toán trong chiều nay.','11:05']]},
+{n:'Noah Rivera',i:'NR',c:['#3d4a5a','#9bb0c8'],r:'Nghệ sĩ 3D · Los Angeles',u:2,m:[[0,'t','Mình vừa xem bài đăng của bạn, phần ánh sáng rất đẹp!','09:12'],[0,'t','Bạn có nhận commission nhân vật 3D không? Mình cần cho một dự án game indie.','09:13']]},
+{n:'Studio Solis',i:'SS',c:['#1c2430','#5c6b86'],r:'Tuyển dụng · Studio Solis',u:1,m:[[0,'t','Chào Elena, chúng mình rất ấn tượng với portfolio của bạn.','Hôm qua'],[0,'t','Bạn có thể phỏng vấn vị trí Visual Designer vào thứ Năm tuần này không?','Hôm qua']]},
+{n:'Mina Sato',i:'MS',c:['#6b4f55','#e0b9b4'],r:'Nghệ nhân gốm · Tokyo',u:0,m:[[1,'t','Mình đã gửi file sketch cho bạn rồi nhé.','Th 2'],[0,'t','Nhận được rồi, cảm ơn Elena!','Th 2']]},
+{n:'Julien Caron',i:'JC',c:['#4a4f45','#b7b59a'],r:'Motion Designer · Paris',u:0,m:[[0,'t','Working process animation của bạn hay quá, mình học được nhiều!','Th 7'],[1,'t','Cảm ơn Julien! Mình sẽ đăng thêm phần compositing nhé.','Th 7']]}];
+var cs=0;
+function lm(c){return c.m.filter(function(m){return m[0]<2}).pop()}
+function pv(c){var l=lm(c);return !l?'':l[1]=='f'?'Đã gửi một tệp':l[1]=='q'?'Báo giá commission':(l[0]?'Bạn: ':'')+l[2]}
+function rl(){var q=$('#chq').value.toLowerCase();$('#cvl').innerHTML=CV.map(function(c,i){var l=lm(c);return c.n.toLowerCase().indexOf(q)>-1?'<button class="ci'+(i==cs?' on':'')+'" data-i="'+i+'"><div class="av" style="width:46px;height:46px;--c1:'+c.c[0]+';--c2:'+c.c[1]+'">'+c.i+'</div><div><b><span>'+esc(c.n)+'</span><small>'+(l?l[3]:'')+'</small></b><p>'+esc(pv(c))+'</p></div>'+(c.u?'<span class="ub">'+c.u+'</span>':'')+'</button>':''}).join('')}
+function rt(){var c=CV[cs];
+ $('#thh').innerHTML='<button class="ib bk" aria-label="Quay lại">←</button><div class="av" style="width:42px;height:42px;--c1:'+c.c[0]+';--c2:'+c.c[1]+'">'+c.i+'</div><div><b>'+esc(c.n)+'</b><small style="display:block;color:var(--muted)">'+esc(c.r)+' · <i class="live" style="margin:0 4px 0 0"></i>Đang online</small></div>';
+ $('#msgs').innerHTML=c.m.map(function(m){if(m[0]==2)return '<div class="dsep">'+esc(m[2])+'</div>';var b,x=m[2];
+  if(m[1]=='f')b='<div class="fcd"><div class="fic">PDF</div><div><b>'+esc(x.name)+'</b><small>'+x.sz+'</small></div></div>';
+  else if(m[1]=='q')b='<div class="qc"><div class="qh"><b>Báo giá commission</b><span class="badge">Chờ phản hồi</span></div><div class="qt">'+esc(x.t)+'</div><div class="qr"><span>Chi phí</span><b>'+x.a+'</b></div><div class="qr"><span>Hạn giao</span><b>'+x.d+'</b></div><small>'+esc(x.n)+'</small></div>';
+  else b='<div class="bb">'+esc(x)+'</div>';
+  return '<div class="m'+(m[0]?' me':'')+'">'+b+'<small>'+m[3]+'</small></div>'}).join('');
+ var e=$('#msgs');e.scrollTop=e.scrollHeight}
+function ubd(){var n=0;CV.forEach(function(c){n+=c.u});var e=$('.side a[href="#chat"] em');e.textContent=n;e.style.display=n?'':'none'}
+function snd(){var v=$('#cmsg').value.trim();if(!v)return;var d=new Date();CV[cs].m.push([1,'t',v,('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)]);$('#cmsg').value='';rl();rt()}
+rl();rt();ubd();
+$('#chq').addEventListener('input',rl);$('#csend').onclick=snd;$('#cmsg').addEventListener('keydown',function(e){if(e.key=='Enter')snd()});
+document.addEventListener('click',function(e){var x;
+ if(x=e.target.closest('.ci')){cs=+x.dataset.i;CV[cs].u=0;ubd();rl();rt();$('#cc').classList.add('open')}
+ if(e.target.closest('.bk'))$('#cc').classList.remove('open')});
+route();
+</script>
+</body>
+</html>
